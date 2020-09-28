@@ -1,0 +1,473 @@
+/* global css start*/
+@font-face {
+    font-family: Now;
+    src: url(../fonts/Now-Black.woff);
+}
+h1, h2, h3{
+    font-family: 'Ubuntu', sans-serif; 
+    margin: 0;
+    color: #000000;
+}
+h1{
+    font-size: 32px;
+    text-transform: capitalize;
+}
+h2{
+    font-size: 24px;
+    text-transform: capitalize;
+}
+h3{
+    font-size: 15px;
+    text-transform: capitalize;
+}
+p{
+    font-family: Now;
+    text-transform: capitalize;
+    margin: 0;
+    color: #d8d8d8;
+    font-size: 14px;
+}
+label{
+    font-family: Now;
+    text-transform: capitalize;
+    margin: 0;
+    font-size: 14px;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-family: Now;
+    text-transform: capitalize;
+    margin: 0;
+    color: #d8d8d8;
+    font-size: 14px;
+}
+a{
+    font-family: Now;
+    text-transform: capitalize;
+    margin: 0;
+    color: #000000;
+    font-size: 14px;
+}
+li{
+    font-family: Now;
+    text-transform: capitalize;
+    list-style: none;;
+}
+td{
+    font-family: Now;
+    text-transform: capitalize;
+}
+button{
+    font-family: Now;
+    text-transform: capitalize;
+}
+label{
+    font-family: Now;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+button:focus{
+    box-shadow: none!important;
+    outline: none!important
+}
+a:hover{
+    text-decoration: none;
+}
+ul{
+    padding: 0;
+    margin: 0;
+}
+.body-content{
+    width: 100%;
+    display: flex;
+}
+.left-sidebar{
+    background: white;
+    height: 100vh;
+    width: 15%;
+}
+.main-content{
+    width: 85%;
+    background: #fcfcfc;
+    padding-bottom: 50px;
+}
+.form-control:focus{
+    box-shadow: none!important;
+}
+.for-mob{
+    display: none;
+}
+.hide-nav{
+    display: none;
+}
+button{
+    border-radius: 1px!important;
+}
+tr{
+    text-align: center;
+}
+.btn-primary, .btn-secondary{
+    background: #dd2173;
+    border: 1px solid #dd2173;
+}
+.badge-primary{
+    background: #dd2173;
+    border: 1px solid #dd2173;
+}
+.btn-primary:hover, .btn-secondary:hover{
+    color: #dd2173;
+    background: white;
+    border: 1px solid white;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, 
+.btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle{
+    color: #dd2173;
+    background: white;
+    border: 1px solid white;
+}
+.btn-secondary:not(:disabled):not(.disabled).active, 
+.btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle{
+    color: #dd2173;
+    background: white;
+    border: 1px solid white;
+}
+.form-control:focus{
+    border: 1px solid #dd2173;
+}
+table{
+    width: 100%!important;
+}
+.modal-body table thead tr{
+        background: #dd2173!important;
+}
+
+/* global css end*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* topbar pc start */
+.topbar-pc{
+    padding: 15px;
+}
+.my-profile ul{
+    text-align: right;
+}
+.my-profile ul li{
+    display: inline;
+    margin: 0 10px;
+}
+.my-profile ul li a{
+    color: #b0b2b8;
+}
+.user-admin{
+    position: relative;
+}
+.profile-dropdown{
+    position: absolute;
+    top: 100%;
+    right:0%;
+    background: white;
+    z-index: 2;
+    width: 200px;
+    border: 1px solid #dad9d9;
+    display: none;
+}
+.profile-dropdown ul{
+    text-align: left;
+}
+.profile-dropdown ul li{
+    display: block;
+    margin: 0;
+}
+.profile-dropdown ul li a{
+    display: inline-block;
+    padding: 15px; 
+    width: 100%
+}
+.profile-dropdown ul li a:nth-child(odd){
+    background: #fcfcfc;
+    
+}
+.profile-dropdown ul li a:hover{
+    background: #dd2173;
+    color: white;
+}
+.user-admin:hover .profile-dropdown{
+    display: block;
+}
+.user-admin{
+    cursor: pointer;
+}
+.user-admin p{
+    display: inline;
+}
+.logo img{
+    width: 30%;
+}
+/* topbar pc end */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* left sidebar pc start */
+.nav-item ul li a{
+    width: 100%;
+    display: flex;
+    font-weight: 700;
+}
+.nav-item ul li a .left{
+    width: 80%;
+}
+.nav-item ul li a .right{
+    width: 20%;
+    text-align: right;
+}
+.nav-item{
+    padding: 15px 0;
+}
+.nav-item ul li{
+    margin: 15px 0;
+}
+.nav-item ul li a:hover{
+    color: #dd2173;
+}
+.navbar-dropdown-top{
+    cursor: pointer;
+}
+.navbar-dropdown-child{
+    padding-left: 15px;
+    display: none;
+}
+
+/* left sidebar pc end */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* dashboard css start */
+.page-indicator{
+    padding: 15px;
+}
+.page-indicator ul li{
+    display: inline;
+    margin: 0 10px;
+    font-weight: 700;
+}
+.page-indicator ul li .fas{
+    background: #dd2173;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+section{
+    width: 100%;
+}
+.add-row{
+    padding: 15px;
+    margin: 15px 0
+}
+.add-table{
+    background: #ee3466;
+    color: white;
+}
+.modal-content{
+    border-radius: unset;
+}
+.add-table-form .form-control{
+    border: 1px solid #ee3466;
+}
+.add-table-form .form-control:focus{
+    border: 1px solid #000000;
+}
+.table-item{
+    background-image: url(images/table-blue.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 50%;
+    height: 20vh;
+    position: relative;
+    margin: 15px 0;
+}
+
+.table-content{
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    transform: translateY(-50%);
+    width: max-content;
+}
+.text-available{
+    color: #dd2173;
+}
+.text-occupied{
+    color: #488fe0;
+}
+table{
+    box-shadow: #dad9d9 0px 7px 16px -3px;
+}
+table thead tr{
+    background: #dd2173;
+    color: white;
+}
+.stat-card{
+    background: #dd2173;
+    padding: 15px;
+    text-align: center;
+    transition: 0.4s ease-in-out;
+}
+.stat-card h3{
+    margin: 15px 0;
+    color: white;;
+}
+.stat-card p{
+    color: white;;
+}
+.stat-card .fas{
+    color: white;
+}
+.stat-card:hover{
+    transform: scale(1.1);
+    transition: 0.4s ease-in-out;
+}
+/* dashboard css end */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* login page css start */
+.auth{
+    position: relative;
+    background: #dd2173;
+}
+.auth .container{
+    height: 100vh;
+    position: relative;
+}
+.auth-row{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+}
+.auth-box{
+    display: block;
+    margin: 0 auto;
+    width: max-content;
+}
+.auth-form {
+    background: white;
+    padding: 15px;
+}
+.auth-logo img{
+    margin-bottom: 15px;
+    display: block;
+    margin: 0 auto 15px auto;
+}
+.submit-btn{
+    background: #dd2173; 
+    color: white;
+    border: none;
+    border-radius: 0px;
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+.submit-btn:hover{
+    color: #dd2173;
+    background: white;
+}
+.auth-form .form-control:focus{
+    border: 1px solid #dd2173;
+}
+.auth-card a{
+    display: block;
+    text-align: center;
+}
+.auth-card a:hover{
+    color: #dd2173;
+}
+.input-group-text{
+    background-color: #dd2173;
+    border: 1px solid #dd2173;
+    color: white;
+}
+/* login page css end */
+
+
+
+.form-group{
+    text-align: left
+}
+.form-control{
+    border-radius: 0;
+}
+.default-thhumbnail{
+    margin: 15px 0
+}
