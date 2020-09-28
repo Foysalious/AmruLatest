@@ -61,16 +61,8 @@
 								</div>
 								<div class="col-md-12">
 									<label class="custom_checkbox">
-										ship to a different address?
-										<br>
-										please send your check to store name, store street, store town,  store state / country, store postcode
-									  	<input type="checkbox">
-									  	<span class="checkmark"></span>
-									</label>
-								</div>
-								<div class="col-md-12">
-									<label class="custom_checkbox">Paypal
-									  	<input type="checkbox">
+										cash on delivery
+									  	<input type="radio" checked>
 									  	<span class="checkmark"></span>
 									</label>
 								</div>
@@ -84,106 +76,23 @@
 
 							<!-- review order row start -->
 							<div class="row border">
-								<div class="col-md-12">
-									<div class="row">
-										
-										<!-- thumbnail start -->
-										<div class="col-md-1">
-											<img src="{{asset('Frontend/images/product_4.jpg')}}" class="img-fluid">
-										</div>
-										<!-- thumbnail end -->
+								<div class="col-md-12 table-responsive">
 
-										<!-- info start -->
-										<div class="col-md-2 review-product-info">
-											<h2>brocolly</h2>
-											<p>320 taka</p>
-										</div>
-										<!-- info end -->
+									<table class="table table-striped">
+										<tbody class="cart">
+											<tr>
+												<td>Image</td>
+												<td>Tea</td>
+												<td>100 tk * <input type="number"> <button onclick="return false" class="btn-sm btn-warning">update</button></td>
+												<td>1000 tk</td>
+												<td>Del</td>
+											</tr>
+										</tbody>
+									</table>
 
-										<!-- total item start -->
-										<div class="col-md-6 text-center">
-											<div class="nice-number">
-												<label>Kg</label>
-												<input type="number" value="0 kg" style="width: 2ch;">
-											</div>
-										</div>
-										<!-- total item end -->
-
-										<!-- updated price start -->
-										<div class="col-md-3 updated-price">
-											<p>640 Taka</p>
-										</div>
-										<!-- updated price end -->
-
-									</div>
 								</div>
 							</div>
 							<!-- review order row end -->
-
-							<!-- review order row start -->
-							<div class="row border">
-								<div class="col-md-12">
-									<div class="row">
-										
-										<!-- thumbnail start -->
-										<div class="col-md-1">
-											<img src="{{asset('Frontend/images/9-1-170x185.jpg')}}" class="img-fluid">
-										</div>
-										<!-- thumbnail end -->
-
-										<!-- info start -->
-										<div class="col-md-2 review-product-info">
-											<h2>brocolly</h2>
-											<p>320 taka</p>
-										</div>
-										<!-- info end -->
-
-										<!-- total item start -->
-										<div class="col-md-6 text-center">
-											<div class="nice-number">
-												<label>Kg</label>
-												<input type="number" value="0 kg" style="width: 2ch;">
-											</div>
-										</div>
-										<!-- total item end -->
-
-										<!-- updated price start -->
-										<div class="col-md-3 updated-price">
-											<p>640 Taka</p>
-										</div>
-										<!-- updated price end -->
-
-									</div>
-								</div>
-							</div>
-							<!-- review order row end -->
-
-							<!-- sub total start -->
-							<div class="row border">
-								<div class="col-md-12">
-									<h2>subtotal : </h2>
-								</div>
-							</div>
-							<!-- sub total end -->
-
-							<!-- coupon code start -->
-							<div class="row border">
-								<div class="col-md-12">
-									<div class="row">
-										<div class="col-md-2 pd-0">
-											<h2>coupon code : </h2>
-										</div>
-
-										<div class="col-md-4 coupon-code">
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="coupon code" name="">
-												<button type="submit" class="btn">apply</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- coupon code end -->
 
 							<!-- total start -->
 							<div class="row border text-right">

@@ -47,17 +47,17 @@
 
 						<li>
 							
-								@auth
-								<a href="{{ route('profile') }}">
-									<img src="{{ asset('frontend/images/user.png') }}" class="img-fluid">
-								</a>
-								
-								@else
-								<a href="{{ route('customerlogin') }}">
-									<img src="{{ asset('frontend/images/user.png') }}" class="img-fluid">
-								</a>
-								
-								@endauth
+							@auth
+							<a href="{{ route('profile') }}">
+								<img src="{{ asset('frontend/images/myUser.png') }}" width="32px" class="img-fluid">
+							</a>
+							
+							@else
+							<a href="{{ route('customerlogin') }}">
+								<img src="{{ asset('frontend/images/user.png') }}" class="img-fluid">
+							</a>
+							
+							@endauth
 							
 						</li>
 					</ul>
@@ -72,8 +72,11 @@
 						</tbody>
 					</table>
 					<div class="cart-button">
-						<button class="view-cart">view cart</button>
-						<button class="view-checkout">checkout</button>
+						@auth
+						<a href="{{ route('checkout') }}" class="view-checkout">checkout</a>
+						@else
+						<a href="{{ route('customerlogin') }}" class="view-checkout">checkout</a>
+						@endauth
 					</div>
 				</div>
 				<!-- cart dropdown list end -->
@@ -174,7 +177,6 @@
 			</tbody>
 		</table>
 		<div class="cart-button">
-			<button class="view-cart">view cart</button>
 			<button class="view-checkout">checkout</button>
 		</div>
 	</div>

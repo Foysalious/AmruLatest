@@ -37,6 +37,7 @@ function display_cart_items(items){
 
             if(!items.length){
                 document.getElementsByClassName('cart')[0].innerHTML = `<img src="/frontend/images/empty_cart.png">`
+                document.getElementsByClassName('cart')[1].innerHTML = `<img src="/frontend/images/empty_cart.png">`
                 document.getElementsByClassName('cart-button')[0].style.display = 'none'
                 return document.getElementsByClassName('cart-button')[1].style.display = 'none'
             }
@@ -80,6 +81,8 @@ function display_cart_items(items){
                                                         </tr>`
         })
 
+        
+
         cart_delete()
 }
 
@@ -89,8 +92,6 @@ function cart_delete(){
     for(let i in delete_button){
         delete_button[i].onclick = e => {
             
- 
-
             axios.delete(`/delete_cart/${e.target.dataset.id}`).then(res => {
               
                 if(res.data){
