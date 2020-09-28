@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     public function add_to_cart(Request $request){
+        
         $id = $request->id;    
         
         $product = Product::find($id);
@@ -32,7 +33,7 @@ class CartController extends Controller
             foreach($sessionCart as $singleCart){
                 if($singleCart['id'] == $cart['id']){
                     $singleCart['qty']++;
-                    $singleCart['total'] +=  $cart['price'];
+                    $singleCart['total'] +=  $cart['price']*$singleCart['qty'];
                     $exist = true;
                 }
                 array_push($newCart, $singleCart);
@@ -50,5 +51,31 @@ class CartController extends Controller
 
         $request->session()->put('cart', $newCart);
         return $request->session()->get('cart');
+    }
+
+
+    public function get_cart(Request $request){
+        return $request->session()->get('cart');
+    }
+
+
+    public function delete_cart(Request $request, $id){
+        $carts = $this->get_cart($request);
+        $newCart = [];
+        if($carts){
+            foreach($carts as $cart){
+                if($cart['id'] != $id){
+                    array_push($newCart, $cart);
+                }
+            }
+
+
+        }
+
+       
+        $request->session()->put('cart', $newCart);
+        
+
+        return $this->get_cart($request);
     }
 }

@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CartController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Models\Backend\Cart;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -133,6 +134,8 @@ Route::post('/customer-register', [RegisterController::class,'registerCustomer']
 Route::post('/customer-login', [loginController::class,'loginCustomer'])->name('login.customer');
 
 Route::post('/add_to_cart', [CartController::class, 'add_to_cart']);
+Route::get('/get_cart', [CartController::class, 'get_cart']);
+Route::delete('/delete_cart/{id}', [CartController::class, 'delete_cart']);
 
 
 

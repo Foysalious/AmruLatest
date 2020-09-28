@@ -39,7 +39,7 @@
 
 							<!-- cart number start -->
 							<div class="cart-number">
-								<p>5</p>
+								<div class="count" style="color: white;"></div>
 							</div>
 							<!-- cart number end-->
 						</li>
@@ -67,33 +67,8 @@
 				<div class="cart-item" id="cart-item" onmouseover="showCart()" onmouseout="hideCart()">
 					<table class="table table-striped">
 						<thead>
-						<tbody>
-						  <tr>
-							<td>
-								<img src="{{ asset('frontend/images/12-1-170x185.jpg') }}" width="32px" alt="">
-							</td>
-							<td>
-								<p>product name</p>
-								<p>150 taka</p>
-								<p>3x</p>
-							</td>
-							<td>
-								<button class=""><i class="fas fa-times"></i></button>
-							</td>
-						  </tr>
-						  <tr>
-							<td>
-								<img src="{{ asset('frontend/images/9-1-170x185.jpg') }}" width="32px" alt="">
-							</td>
-							<td>
-								<p>product name</p>
-								<p>150 taka</p>
-								<p>3x</p>
-							</td>
-							<td>
-								<button class=""><i class="fas fa-times"></i></button>
-							</td>
-						  </tr>
+						<tbody class="cart">
+						  
 						</tbody>
 					</table>
 					<div class="cart-button">
@@ -191,36 +166,11 @@
 	<!-- show item end -->
 
 	<!-- show item start -->
-	<div class="show-item p4">
+	<div class="show-item p4 s">
 		<table class="table table-striped">
 			<thead>
-			<tbody>
-			  <tr>
-				<td>
-					<img src="{{ asset('frontend/images/12-1-170x185.jpg') }}" width="32px" alt="">
-				</td>
-				<td>
-					<p>product name</p>
-					<p>150 taka</p>
-					<p>3x</p>
-				</td>
-				<td>
-					<button class=""><i class="fas fa-times"></i></button>
-				</td>
-			  </tr>
-			  <tr>
-				<td>
-					<img src="{{ asset('frontend/images/9-1-170x185.jpg') }}" width="32px" alt="">
-				</td>
-				<td>
-					<p>product name</p>
-					<p>150 taka</p>
-					<p>3x</p>
-				</td>
-				<td>
-					<button class=""><i class="fas fa-times"></i></button>
-				</td>
-			  </tr>
+			<tbody class="cart">
+			  
 			</tbody>
 		</table>
 		<div class="cart-button">
@@ -262,7 +212,7 @@
 			<div class="col-2 show-item-mob" id="p4">
 				<!-- cart number start -->
 				<div class="cart-number">
-					<p>5</p>
+					<div class="count" style="color: white;"></div>
 				</div>
 				<!-- cart number end-->
 				<img src="{{ asset('frontend/images/cart.png') }}" class="img-fluid">

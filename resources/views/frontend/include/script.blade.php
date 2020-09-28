@@ -17,6 +17,9 @@
 <!-- mice number js file -->
 <script src="{{ asset('frontend/js/nicenumber.js') }}"></script> 
 
+<!-- swal -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <script type="text/javascript" src="{{ asset('frontend/js/step.js') }}"></script>
 
 <!-- jqeruy ui -->

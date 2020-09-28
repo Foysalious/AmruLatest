@@ -31,6 +31,9 @@ p{
 	font-size: 13px;
 	color: #989898;
 }
+button:focus{
+	outline: none;
+}
 label{
 	margin: 0;
 	padding: 0;
@@ -817,6 +820,13 @@ h2 del{
 	text-align: right;
 }
 .product-item-01 .product-item-cart button{
+	background: #d92173;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    transition: 0.4s ease-in-out;
+}
+.addToCart{
 	background: #d92173;
     color: white;
     padding: 10px 15px;
