@@ -58,7 +58,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="form-outer">
-					<form action="" method="" class="myform">
+				<form action="{{route("place_order")}}" method="POST" class="myform">
 						@csrf
 
 						<div id="cart_detail">

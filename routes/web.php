@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CartController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\InvoiceController;
 use App\Models\Backend\Cart;
 use Illuminate\Support\Facades\Auth;
 
@@ -171,3 +172,4 @@ Route::get('/profile',[FrontendController::class,'profile'])->name('profile')->m
 Route::get('/subcategory/{category:slug}',[FrontendController::class,'subcat'])->name('subcat');
 Route::get('/shop/{subcat:slug}',[FrontendController::class,'shop'])->name('shop');
 Route::get('/signup',[FrontendController::class,'signup'])->name('signup');
+Route::post('/place/order/for/new/order/for/user/new/order/and/welcome', [InvoiceController::class, 'create_order'])->name('place_order')->middleware('customer_auth');

@@ -95,94 +95,6 @@
 
 			<!-- middle part start -->
 			<div class="col-md-8">
-				
-				<!-- home page product category row start -->
-				<div class="row">
-					<div class="home-page-product-cart-carousel owl-carousel owl-theme">
-
-						<!-- category item start -->
-    					<div class="item">
-    						<a>
-								<div class="col-md-12">
-									<img src="{{ asset('frontend/images/cat2.jpg') }}" class="img-fluid">
-								</div>
-							</a>
-    					</div>
-						<!-- category item end -->
-						
-						<!-- category item start -->
-    					<div class="item">
-    						<a>
-								<div class="col-md-12">
-									<img src="{{ asset('frontend/images/cat3.jpg') }}" class="img-fluid">
-								</div>
-							</a>
-    					</div>
-						<!-- category item end -->
-						
-						<!-- category item start -->
-    					<div class="item">
-    						<a>
-								<div class="col-md-12">
-									<img src="{{ asset('frontend/images/cat4.jpg') }}" class="img-fluid">
-								</div>
-							</a>
-    					</div>
-						<!-- category item end -->
-						
-						<!-- category item start -->
-    					<div class="item">
-    						<a>
-								<div class="col-md-12">
-									<img src="{{ asset('frontend/images/cat5.jpg') }}" class="img-fluid">
-								</div>
-							</a>
-    					</div>
-						<!-- category item end -->
-						
-						<!-- category item start -->
-    					<div class="item">
-    						<a>
-								<div class="col-md-12">
-									<img src="{{ asset('frontend/images/cat2.jpg') }}" class="img-fluid">
-								</div>
-							</a>
-    					</div>
-						<!-- category item end -->
-						
-						<!-- category item start -->
-    					<div class="item">
-    						<a>
-								<div class="col-md-12">
-									<img src="{{ asset('frontend/images/cat3.jpg') }}" class="img-fluid">
-								</div>
-							</a>
-    					</div>
-						<!-- category item end -->
-						
-						<!-- category item start -->
-    					<div class="item">
-    						<a>
-								<div class="col-md-12">
-									<img src="{{ asset('frontend/images/cat4.jpg') }}" class="img-fluid">
-								</div>
-							</a>
-    					</div>
-						<!-- category item end -->
-						
-						<!-- category item start -->
-    					<div class="item">
-    						<a>
-								<div class="col-md-12">
-									<img src="{{ asset('frontend/images/cat5.jpg') }}" class="img-fluid">
-								</div>
-							</a>
-    					</div>
-						<!-- category item end -->
-
-    				</div>
-				</div>
-				<!-- home page product category row end -->
 
 				<!-- filtering item row start -->
 				<div class="row home-product-filtering">
@@ -205,7 +117,7 @@
 				<div class="row filter-product-list  one">
 					
 					<!-- product item start -->
-					@foreach(App\Models\Backend\Product::orderBy('id','desc')->where('is_featured', 1)->where('status', 1)->get() as $product) 
+					@foreach(App\Models\Backend\Product::orderBy('id','desc')->where('is_featured', 1)->where('status', 1)->take(8)->get() as $product) 
 					<div class="col-md-3 col-6 product-hover">
 						<div class="product-item-01">
 							<div class="product-hover-item">
@@ -235,15 +147,21 @@
 							<!-- go product details -->
 							
 							<div class="product-item-cart">
-							<button data-id="{{ $product->id }}" data-image="{{ $product->images[0]->image }}" data-name="{{ $product->name }}" 
-								@if( $product->offer_price == NULL )
-								data-price="{{ $product->regular_price }}"
+								@if( $product->quantity > 0 )
+									<button data-id="{{ $product->id }}" data-image="{{ $product->images[0]->image }}" data-name="{{ $product->name }}" 
+										@if( $product->offer_price == NULL )
+										data-price="{{ $product->regular_price }}"
+										@else
+										data-price="{{ $product->offer_price }}"
+										@endif 
+										class="addToCart">
+											<img src="{{ asset('frontend/images/cart-bag.png') }}"> add to bag
+									</button>
 								@else
-								data-price="{{ $product->offer_price }}"
-								@endif 
-								class="addToCart">
-									<img src="{{ asset('frontend/images/cart-bag.png') }}"> add to bag
+								<button class="addToCart disabled">
+									out of stock
 								</button>
+								@endif
 							</div>
 							<ul>
 								<li><i class="fas fa-star"></i></li>
@@ -278,7 +196,7 @@
 											<h2 class="quick-view-heading">{{ $product->name }}</h2>
 
 												<!-- review start -->
-												<div class="row">
+												{{-- <div class="row">
 													<div class="col-md-6 col-6 product-quick-view-right-left">
 														<ul>
 															<li>
@@ -301,7 +219,7 @@
 													<div class="col-md-6 col-6">
 														<p>122 reviews</p>
 													</div>
-												</div>
+												</div> --}}
 												<!-- review end -->
 
 												<!-- avaiablity and stock start -->
@@ -310,7 +228,11 @@
 														<h2>availablity : </h2>
 													</div>
 													<div class="col-md-6 col-6">
+														@if( $product->quantity > 0 )
 														<h2>in stock</h2>
+														@else
+														<h2 class="badge badge-danger">out of stock</h2>
+														@endif
 													</div>
 												</div>
 												<!-- avaiablity and stock end -->
@@ -480,7 +402,11 @@
 														<h2>availablity : </h2>
 													</div>
 													<div class="col-md-6 col-6">
+														@if( $product->quantity > 0 )
 														<h2>in stock</h2>
+														@else
+														<h2 class="badge badge-danger">out of stock</h2>
+														@endif
 													</div>
 												</div>
 												<!-- avaiablity and stock end -->
@@ -599,6 +525,7 @@
 					<!-- go product details -->
 					
 					<div class="product-item-cart">
+						@if( $product->quantity > 0 )
 						<button data-id="{{ $product->id }}" data-image="{{ $product->images[0]->image }}" data-name="{{ $product->name }}" 
 							@if( $product->offer_price == NULL )
 							data-price="{{ $product->regular_price }}"
@@ -607,7 +534,12 @@
 							@endif 
 							class="addToCart">
 								<img src="{{ asset('frontend/images/cart-bag.png') }}"> add to bag
-							</button>
+						</button>
+						@else
+						<button class="addToCart disabled">
+							<img src="{{ asset('frontend/images/cart-bag.png') }}"> out of stock
+						</button>
+						@endif
 					</div>
 					<ul>
 						<li><i class="fas fa-star"></i></li>
@@ -680,7 +612,11 @@
 												<h2>availablity : </h2>
 											</div>
 											<div class="col-md-6 col-6">
+												@if( $product->quantity > 0 )
 												<h2>in stock</h2>
+												@else
+												<h2 class="badge badge-danger">out of stock</h2>
+												@endif
 											</div>
 										</div>
 										<!-- avaiablity and stock end -->

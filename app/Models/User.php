@@ -55,4 +55,10 @@ class User extends Authenticatable
         }
         return false;
     }
+
+
+
+    public function invoice(){
+        return $this->hasMany(Invoice::class, "user_id", 'id');
+    }
 }
