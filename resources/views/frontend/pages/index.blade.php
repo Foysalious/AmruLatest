@@ -767,3 +767,9 @@
 </section>
 <!-- sign up section end -->
 @endsection
+
+
+
+@section('cart')
+<script src="{{asset('frontend/js/cart.js')}}"></script>
+@endsection

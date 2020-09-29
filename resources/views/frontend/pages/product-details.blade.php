@@ -377,4 +377,11 @@ your next hair trim belongs?</p>
 </section>
 <!-- product details section end -->
 
+
 @endsection
+
+
+
+
+
+

@@ -2,9 +2,17 @@
 
 @section('body-content')
 
+<!-- checkout empty start -->
+<section class="empty_cart ">
+	<div class="container">
+		<img src="{{ asset('frontend/images/empty_cart.png') }}" style="display: block; margin: 0 auto; width: 50%" alt="">
+	</div>
+</section>
+<!-- checkout empty start -->
+
 
 <!-- checkout main section start -->
-<section class="checkout section-padding">
+<section class="checkout section-padding main_checkout">
 	<div class="container">
 
 		<!-- progress row start -->
@@ -79,14 +87,8 @@
 								<div class="col-md-12 table-responsive">
 
 									<table class="table table-striped">
-										<tbody class="cart">
-											<tr>
-												<td>Image</td>
-												<td>Tea</td>
-												<td>100 tk * <input type="number"> <button onclick="return false" class="btn-sm btn-warning">update</button></td>
-												<td>1000 tk</td>
-												<td>Del</td>
-											</tr>
+										<tbody id="cart_item_wrapper">
+											
 										</tbody>
 									</table>
 
@@ -250,4 +252,9 @@
 </section>
 <!-- checkout main section end -->
 
+@endsection
+
+
+@section('cart')
+<script src="{{asset('frontend/js/checkout.js')}}"></script>
 @endsection

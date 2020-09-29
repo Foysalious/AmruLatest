@@ -31,3 +31,5 @@
 
 <!-- the main js file -->
 <script type="text/javascript" src="{{ asset('frontend/js/main.js') }}" ></script>
+
+@yield('cart')

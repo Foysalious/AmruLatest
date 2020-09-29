@@ -33,7 +33,7 @@ class CartController extends Controller
             foreach($sessionCart as $singleCart){
                 if($singleCart['id'] == $cart['id']){
                     $singleCart['qty']++;
-                    $singleCart['total'] +=  $cart['price']*$singleCart['qty'];
+                    $singleCart['total'] =  $cart['price']*$singleCart['qty'];
                     $exist = true;
                 }
                 array_push($newCart, $singleCart);
