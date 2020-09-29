@@ -99,10 +99,10 @@
 							<!-- total start -->
 							<div class="row border text-right">
 								<div class="col-md-12">
-									<p>free delivery</p>
+									<p>delivery charge : 100 taka</p>
 								</div>
 								<div class="col-md-12">
-									<h2>total : 1280 taka</h2>
+									<h2>total : <span id="total_price"></span> taka</h2>
 								</div>
 							</div>
 							<!-- total end -->

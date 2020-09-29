@@ -5,6 +5,9 @@ window.onload = () => {
         display_cart_items(res.data)    
         display_cart_item_to_checkout_page(res.data)   
         cart_delete()
+        update_checkout_quantiy()
+        total_price(res.data)
+        
 
         
     })
@@ -69,7 +72,7 @@ function display_cart_items(items){
 
         
 
-        cart_delete()
+        
 }
 
 
@@ -85,6 +88,8 @@ function cart_delete(){
                     display_cart_items(res.data)
                     display_cart_item_to_checkout_page(res.data)
                     cart_delete()
+                    update_checkout_quantiy()
+                    total_price(res.data)
                 }
             })
         }
@@ -117,7 +122,7 @@ function display_cart_item_to_checkout_page(item){
                             <img src="/images/product/${value.image}" width="32px" alt="">
                         </td>                           
                         <td>${value.name}</td>
-                        <td>${value.price} tk * <input type="number" min="1" value="${value.qty}"> <button onclick="return false" class="btn-sm btn-warning">update</button></td>
+                        <td>${value.price} tk * <input type="number" min="1" value="${value.qty}" class="update_value" data-id="${value.id}" style="width:60px;border:2px solid #d92173;border-radius:5px;font-weight:bold;margin-left:5px;"> <span class="update_button btn-sm" style="background:#d92173;font-weight:bold;color:#fff;cursor:pointer;">update</span></td>
                         <td>${value.total} tk</td>
                         <td>                         
                             
@@ -128,3 +133,37 @@ function display_cart_item_to_checkout_page(item){
     })
 }
 
+
+
+function update_checkout_quantiy(){
+    let update_value = document.getElementsByClassName('update_value')
+    let update_button = document.getElementsByClassName('update_button')
+
+    for(let i in update_button){
+        update_button[i].onclick = () => {
+            let qty = update_value[i].value
+            let id = update_value[i].dataset.id
+
+            axios.put(`/update_cart/${id}`, {qty})
+            .then(res => {
+                display_cart_items(res.data)    
+                display_cart_item_to_checkout_page(res.data)   
+                cart_delete()
+                update_checkout_quantiy()
+                total_price(res.data)
+            })
+
+        }
+    }
+}
+
+
+
+function total_price(items=Array){
+    let total = 100
+    items.forEach(value => {
+        total+= value.total
+    })
+
+    return document.getElementById('total_price').innerHTML = total
+}

@@ -136,6 +136,7 @@ Route::post('/customer-login', [loginController::class,'loginCustomer'])->name('
 Route::post('/add_to_cart', [CartController::class, 'add_to_cart']);
 Route::get('/get_cart', [CartController::class, 'get_cart']);
 Route::delete('/delete_cart/{id}', [CartController::class, 'delete_cart']);
+Route::put('/update_cart/{id}', [CartController::class, 'update_cart']);
 
 
 
