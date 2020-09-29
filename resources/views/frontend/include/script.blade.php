@@ -14,9 +14,6 @@
 <!-- owl carousel js file -->
 <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script> 
 
-<!-- mice number js file -->
-<script src="{{ asset('frontend/js/nicenumber.js') }}"></script> 
-
 <!-- swal -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 

@@ -127,6 +127,10 @@ span del{
 h2 del{
 	color: #dfdfdf!important;
 }
+button{
+	border: none;
+	text-transform: capitalize;
+}
 /* Global css end */
 
 
@@ -1205,51 +1209,7 @@ h2 del{
 	color: #d92173 ;
 	font-weight: 600;
 }
-.nice-number {
-  display: inline-flex;
-  justify-content: stretch;
-}
 
-.nice-number input {
-  vertical-align: middle;
-  -moz-appearance: textfield;
-  box-sizing: content-box;
-  margin: 0;
-  text-align: center;
-}
-
-.nice-number input::-webkit-inner-spin-button,
-.nice-number input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-.nice-number[type=button]:not(:disabled), 
-.nice-number[type=reset]:not(:disabled), 
-.nice-number[type=submit]:not(:disabled), 
-button:not(:disabled){
-	border: 1px solid #e5e5e5;
-}	
-.nice-number input{
-	border: 1px solid #e5e5e5;
-	width: 50px!important;
-	font-family: 'Roboto', sans-serif;
-	text-transform: capitalize;
-	font-size: 13px;
-	color: #989898;
-}
-.nice-number button:focus{
-	outline: none!important;
-}
-.nice-number{
-	position: relative;
-}
-.nice-number label{
-	position: absolute;
-    left: 55%;
-    top: 50%;
-    transform: translateY(-50%);
-   	z-index: 2;
-}
 .updated-price p{
 	color: #d92173 ;
 	font-weight: 600;
@@ -1273,7 +1233,14 @@ button:not(:disabled){
     border-radius: unset;
     border: unset!important;
 }
-
+.filter-button{
+	position: absolute;
+    bottom: 0;
+    border: none;
+    padding: 10px;
+    background: #dd2173;
+    color: white;
+}
 .custom_checkbox {
   display: block;
   position: relative;

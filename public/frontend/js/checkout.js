@@ -167,3 +167,23 @@ function total_price(items=Array){
 
     return document.getElementById('total_price').innerHTML = total
 }
+
+
+const process_cart_button = document.getElementById('process_cart')
+process_cart_button.addEventListener('click', ()=> {
+    axios.get('/get_cart')
+    .then(res => {      
+        cart_process(res.data)        
+    })
+})
+
+function cart_process(items=Array){
+    document.getElementById('cart_detail').innerHTML = ' '
+    items.forEach(value => {
+        document.getElementById('cart_detail').innerHTML += `
+            <input type="hidden" value="${value.id}" name="product_id[]" />
+            <input type="hidden" value="${value.qty}" name="product_qty[]" />
+        `
+    })
+
+}

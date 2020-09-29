@@ -59,6 +59,11 @@
 			<div class="col-md-12">
 				<div class="form-outer">
 					<form action="" method="" class="myform">
+						@csrf
+
+						<div id="cart_detail">
+
+						</div>
 						
 						<!-- billing address start -->
 						<div class="page slidepage review-order">
@@ -111,7 +116,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group text-right">
-										<p class="next-1 next">next step</p>
+										<p id="process_cart" class="next-1 next">next step</p>
 									</div>
 								</div>
 							</div>
@@ -125,17 +130,11 @@
 						<div class="page">
 
 							<div class="row">
-								<div class="col-md-12">
-									<div class="form-check">
-									    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-									    <label class="form-check-label" for="exampleCheck1">ship to a different address?</label>
-									  </div>
-								</div>
 
 								<div class="col-md-12">
 									<div class="form-group">
-										<label>order notes</label>
-										<textarea class="form-control" rows="15"></textarea>
+										<label>order notes (optional)</label>
+										<textarea class="form-control" name="order_note" rows="15"></textarea>
 									</div>
 								</div>
 							</div>
@@ -158,44 +157,26 @@
 						<div class="page ">
 
 							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>first name*</label>
-										<input type="text" class="form-control validate" required="" name="">
-									</div>
-								</div>
-
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>last name*</label>
-										<input type="text" class="form-control validate" required="" name="">
-									</div>
-								</div>
-							</div>
-							
-							<!-- company name start -->
-							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<label>company name</label>
-										<input type="text" class="form-control validate" required="" name="">
+										<label>Username*</label>
+										<input type="text" readonly class="form-control validate" value="{{ Auth::user()->name }}" required="" name="name">
 									</div>
 								</div>
 							</div>
-							<!-- company name end -->
 
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>email address</label>
-										<input type="email" class="form-control validate" required="" name="">
+										<input type="email" value="{{ Auth::user()->email }}" readonly class="form-control validate" required="" name="email">
 									</div>
 								</div>
 
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>phone*</label>
-										<input type="text" class="form-control validate" required="" name="">
+										<input type="text" class="form-control validate" required="" name="phone">
 									</div>
 								</div>
 							</div>
@@ -204,29 +185,12 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group address-form">
-										<label>address</label>
-										<input type="text" class="form-control validate" required="" name="" placeholder="street">
-										<input type="text" class="form-control validate" required="" name="" placeholder="Apartaments, Suite and etc">
+										<label>shipping address</label>
+										<textarea type="text" class="form-control validate" rows="5" required="" name="" placeholder="street"></textarea>
 									</div>
 								</div>
 							</div>
 							<!-- address end -->
-
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>post code/zip</label>
-										<input type="email" class="form-control validate" required="" name="">
-									</div>
-								</div>
-
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>town/city*</label>
-										<input type="text" class="form-control validate" required="" name="">
-									</div>
-								</div>
-							</div>
 
 							<!-- page change start -->
 							<div class="row">

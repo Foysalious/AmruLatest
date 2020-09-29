@@ -215,11 +215,6 @@ $(document).ready(function(){
 })
 //home page product filtering js
 
-$(function(){
-
-  $('input[type="number"]').niceNumber();
-
-});
 
 var x, i, j, l, ll, selElmnt, a, b, c;
 /*look for any elements with the class "custom-select":*/

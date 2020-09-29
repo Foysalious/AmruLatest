@@ -209,6 +209,12 @@
 .topbar-mob-img img{
 	width: 25%;
 }
+.filter-button{
+	position: unset;
+	width: 100%;
+	display: inline-block;
+	margin: 10px 0;
+}
 }
 
 
@@ -429,6 +435,15 @@
 	right: 0;
 	top: -10px;
 	left: unset;
+}
+.topbar-mob-img img{
+	width: 25%;
+}
+.filter-button{
+	position: unset;
+	width: 100%;
+	display: inline-block;
+	margin: 10px 0;
 }
 }
 
