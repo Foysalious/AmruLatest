@@ -10,6 +10,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Backend\homeImageController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CartController;
+use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\LinkController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Frontend\FrontendController;
 
@@ -62,7 +64,23 @@ Route::group(['prefix'=>'dashboard', 'middleware'=>['auth','can:superadmin']], f
         Route::post('/delete/{slider:id}',[SliderController::class,'destroy'])->name('sliderDelete');
     });
     //Slider route end
+    //Contact Route Start
+    Route::group(['prefix' => 'contact'], function(){
+        Route::get('/',[ContactController::class, 'index'])->name('contactShow');
+        Route::post('/store',[ContactController::class,'store'])->name('contactStore');
+        Route::post('/update/{contact:id}',[ContactController::class,'update'])->name('contactUpdate');
+        Route::post('/delete/{contact:id}',[ContactController::class,'destroy'])->name('contactDelete');
+    });
+    //Contact Route Start
 
+       //Link Route Start
+       Route::group(['prefix' => 'link'], function(){
+        Route::get('/',[LinkController::class, 'index'])->name('linkShow');
+        Route::post('/store',[LinkController::class,'store'])->name('linkStore');
+        Route::post('/update/{link:id}',[LinkController::class,'update'])->name('linkUpdate');
+        Route::post('/delete/{link:id}',[LinkController::class,'destroy'])->name('linkDelete');
+    });
+    //Link Route Start
     //logo route start
     Route::group(['prefix' => 'logo'], function(){
         Route::get('/',[LogoController::class, 'index'])->name('logo.show');

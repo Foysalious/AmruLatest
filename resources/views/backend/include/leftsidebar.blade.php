@@ -69,6 +69,30 @@
                             </div>
                             </a>
                         </li>
+
+                        <!-- nav single view start -->
+                        <li >
+                            <a href="{{ route('linkShow') }}">
+                            <div class="left">
+                                link
+                            </div>
+                            <div class="right">
+                                <i class="fas fa-bars"></i>
+                            </div>
+                            </a>
+                        </li>
+
+                        <!-- nav single view start -->
+                        <li >
+                            <a href="{{ route('contactShow') }}">
+                            <div class="left">
+                                contact
+                            </div>
+                            <div class="right">
+                                <i class="fas fa-bars"></i>
+                            </div>
+                            </a>
+                        </li>
          
                         <!-- nav drop down view start -->
                         <li>

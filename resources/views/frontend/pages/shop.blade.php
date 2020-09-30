@@ -47,7 +47,7 @@
 					<div class="price-filter">
 						<h2>filter by price</h2>
 
-						<form action="">
+						<form action="{{(route(''))}}">
 							<div class="row">
 
 								<!-- min price start -->
