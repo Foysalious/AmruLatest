@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->integer('regular_price');
             $table->integer('offer_price')->nullable();
             $table->integer('quantity')->default(0);
-            $table->integer('size');
+            $table->string('size');
             $table->boolean('is_packaged')->default(0);
             $table->boolean('is_featured')->default(0);
             $table->boolean('status')->default(0);

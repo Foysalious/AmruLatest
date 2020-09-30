@@ -131,6 +131,9 @@ button{
 	border: none;
 	text-transform: capitalize;
 }
+a:hover{
+	color: unset;
+}
 /* Global css end */
 
 
@@ -2037,6 +2040,11 @@ html .ui-button.ui-state-disabled:active:hover{
 
 
 
+.view-order{
+	background: #d82173;
+	color: white;
+	padding: 10px 15px;;
+}
 
 
 

@@ -3,6 +3,10 @@
 		<div class="row">
 			
 			<!-- widget one start -->
+			@php
+				$contact = App\Models\Backend\Contact::orderBy('id','desc')->first()
+			@endphp
+		
 			<div class="col-md-4">
 				<div class="widget">
 					<img src="{{ asset('frontend/images/logo.png') }}" class="img-fluid">
@@ -12,38 +16,24 @@
 						<img src="{{ asset('frontend/images/widget_icon.png') }}" class="img-fluid">
 					</div>
 					<div class="col-md-10">
-						<h2>379-650-3253</h2>
-						<p>5169 Dhaka Bangladesh. 319</p>
+						<h2>{{ $contact->phone }}</h2>
+						<p>{{ $contact->address }}</p>
 						<ul>
 							<li>
-								<a href="">
+								<a href="{{ $contact->facebook }}">
 									<img src="{{ asset('frontend/images/twitter.png') }}" class="img-fluid">
 								</a>
 							</li>
 							<li>
-								<a href="">
+								<a href="{{ $contact->youtube }}">
 									<img src="{{ asset('frontend/images/facebook.png') }}" class="img-fluid">
-								</a>
-							</li>
-							<li>
-								<a href="">
-									<img src="{{ asset('frontend/images/icon-3.png') }}" class="img-fluid">
-								</a>
-							</li>
-							<li>
-								<a href="">
-									<img src="{{ asset('frontend/images/printrest.png') }}" class="img-fluid">
-								</a>
-							</li>
-							<li>
-								<a href="">
-									<img src="{{ asset('frontend/images/icon-4.png') }}" class="img-fluid">
 								</a>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</div>
+			
 			<!-- widget one end -->
 
 			<!-- widget two start -->
@@ -51,46 +41,13 @@
 				<div class="widget-two">
 					<h2>Categories</h2>
 					<div class="row">
+						@foreach(App\Models\Backend\Category::orderBy('id','asc')->where('parent_id',0)->where('is_delete',0)->take(8)->get() as $category) 
 					 	<div class="col-md-6 col-6">
-					 		<a href="">
-					 			<i class="fas fa-angle-right"></i> food items
+					 		<a href="{{ route('subcat', $category->slug) }}">
+					 			<i class="fas fa-angle-right"></i> {{ $category->name }}
 					 		</a>
-					 	</div>
-					 	<div class="col-md-6 col-6">
-					 		<a href="">
-					 			<i class="fas fa-angle-right"></i> Grocery
-					 		</a>
-					 	</div>
-					 	<div class="col-md-6 col-6">
-					 		<a href="">
-					 			<i class="fas fa-angle-right"></i> Accesories
-					 		</a>
-					 	</div>
-					 	<div class="col-md-6 col-6">
-					 		<a href="">
-					 			<i class="fas fa-angle-right"></i> Soft Drinks
-					 		</a>
-					 	</div>
-					 	<div class="col-md-6 col-6">
-					 		<a href="">
-					 			<i class="fas fa-angle-right"></i> Milk Product
-					 		</a>
-					 	</div>
-					 	<div class="col-md-6 col-6">
-					 		<a href="">
-					 			<i class="fas fa-angle-right"></i> Meat
-					 		</a>
-					 	</div>
-					 	<div class="col-md-6 col-6">
-					 		<a href="">
-					 			<i class="fas fa-angle-right"></i> Cow Meat & Product
-					 		</a>
-					 	</div>
-					 	<div class="col-md-6 col-6">
-					 		<a href="">
-					 			<i class="fas fa-angle-right"></i> Chicken Item
-					 		</a>
-					 	</div>
+						 </div>
+						 @endforeach
 					</div>
 					 
 				</div>
@@ -108,41 +65,7 @@
 					 			<i class="fas fa-angle-right"></i> food items
 					 		</a>
 					 	</div>
-					 	<div class="col-md-6 col-6">
-					 		<a href="">
-					 			<i class="fas fa-angle-right"></i> Grocery
-					 		</a>
-					 	</div>
-					 	<div class="col-md-6 col-6">
-					 		<a href="">
-					 			<i class="fas fa-angle-right"></i> Accesories
-					 		</a>
-					 	</div>
-					 	<div class="col-md-6 col-6">
-					 		<a href="">
-					 			<i class="fas fa-angle-right"></i> Soft Drinks
-					 		</a>
-					 	</div>
-					 	<div class="col-md-6 col-6">
-					 		<a href="">
-					 			<i class="fas fa-angle-right"></i> Milk Product
-					 		</a>
-					 	</div>
-					 	<div class="col-md-6 col-6">
-					 		<a href="">
-					 			<i class="fas fa-angle-right"></i> Meat
-					 		</a>
-					 	</div>
-					 	<div class="col-md-6 col-6">
-					 		<a href="">
-					 			<i class="fas fa-angle-right"></i> Cow Meat & Product
-					 		</a>
-					 	</div>
-					 	<div class="col-md-6 col-6">
-					 		<a href="">
-					 			<i class="fas fa-angle-right"></i> Chicken Item
-					 		</a>
-					 	</div>
+					 	
 					</div>
 
 				</div>

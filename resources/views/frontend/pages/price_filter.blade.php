@@ -319,3 +319,7 @@
 
 
 @endsection
+
+@section('cart')
+<script src="{{asset('frontend/js/cart.js')}}"></script>
+@endsection

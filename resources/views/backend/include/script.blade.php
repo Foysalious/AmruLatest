@@ -16,6 +16,7 @@
 	
 	<!-- the main js file -->
 	<script type="text/javascript" src="{{ asset('backend/js/main.js') }}" ></script>
+	<script type="text/javascript" src="{{ asset('frontend/js/toastr.js') }}" ></script>
 
     <script type="text/javascript">
         $(document).ready( function () {

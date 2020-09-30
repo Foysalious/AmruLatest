@@ -14,6 +14,7 @@
 
     @include('frontend.include.footer')
     @include('frontend.include.script')
+    {!! Toastr::message() !!}
 
 
 

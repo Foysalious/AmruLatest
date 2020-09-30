@@ -19,9 +19,9 @@
 			<!-- right part start -->
 			<div class="col-md-9">
 				<div class="visitor-info">
-					<h2>Khandaker Nahid</h2>
-					<p>Email: Example@gmail.com</p>
-					<p>Phone: 0123456789</p>
+					<h2>{{ Auth::user()->name }}</h2>
+					<p>{{ Auth::user()->email }}</p>
+					<p>{{ Auth::user()->pohone }}</p>
 					<a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="logout">logout</a>
 					<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
 						@csrf
@@ -49,109 +49,87 @@
 
 			<!-- item start -->
 			<div class="col-md-12">
-				<div class="row">
-					<div class="col-md-12">
-						<h2>07/05/2020</h2>
-					</div>
-				</div>
-				<div class="row orderlist-row">
-					<div class="col-md-2">
-						<img src="{{asset('Frontend/images/product_4.jpg')}}" class="img-fluid">
-					</div>
-					<div class="col-md-2 orderlist-name">
-						<div class="orderlist-name-box">
-							<p>Brocolly</p>
-							<h2>320 TK</h2>
-						</div>
-					</div>
-					<div class="col-md-2 orderlist-name">
-						<div class="orderlist-name-box">
-							<p>delivered</p>
-						</div>
-					</div>
-					<div class="col-md-3 orderlist-name">
-						<div class="orderlist-name-box">
-							<h2> <span>Price Paid</span> : 640 Tk</h2>
-						</div>
-					</div>
-					<div class="col-md-2 orderlist-name">
-						<div class="orderlist-name-box order-review">
-							<p class="show-review-popup" id="review_id">review</p>
-						</div>
-
-						<!-- order review popup start -->
-						<div class="order-review-popup review_id">
-							<div class="container">
-								<div class="row">
-									<div class="col-md-6 offset-md-3 main-popup-box">
-										<i class="fas fa-times hide-popup"></i>
-										<div class="order-review-popup-box">
-											<img src="{{asset('Frontend/images/review.png')}}" class="img-fluid review-img">
+				<div class="col-md-12 table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Invoice Id</th>
+								<th>Date</th>
+								<th>price</th>
+								<th>Order Status</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+						@foreach(request()->user()->invoice()->orderBy('id', 'desc')->take(6)->get() as $invoice)
+							<tr>
+								<th scope="row">#{{$invoice->id}}</th>
+								<th scope="row">{{$invoice->created_at->toDayDateTimeString()}}</th>
+								<td>{{$invoice->total}} tk</td>
+								<td>
+									@if($invoice->status == 1)
+										<span class="badge badge-warning">Pending</span>
+									@elseif($invoice->status == 2)
+									<span class="badge badge-primary">Confirmed</span>
+									@elseif($invoice->status == 3)
+									<span class="badge badge-success">Delivered</span>
+									@elseif($invoice->status == 4)
+									<span class="badge badge-danger">Cancelled!</span>
+									@endif
+								</td>
+								<td>
+									<button class="view-order show-review-popup" id="{{ $invoice->id }}">view order</button>
+									<!-- order review popup start -->
+									<div class="order-review-popup {{ $invoice->id }}">
+										<div class="container">
 											<div class="row">
-
-												<!-- leftr part start -->
-												<div class="col-md-8 order-review-popup-box-left">
-													<p>review</p>
-													<h2>rate this product</h2>
-													<ul>
-														<li>
-															<a href="">
-																<i class="fas fa-star"></i>
-															</a>
-														</li>
-														<li>
-															<a href="">
-																<i class="fas fa-star"></i>
-															</a>
-														</li>
-														<li>
-															<a href="">
-																<i class="fas fa-star"></i>
-															</a>
-														</li>
-														<li>
-															<a href="">
-																<i class="fas fa-star"></i>
-															</a>
-														</li>
-														<li>
-															<a href="">
-																<i class="fas fa-star"></i>
-															</a>
-														</li>
-													</ul>
-													<form>
-														<div class="form-group">
-															<textarea class="form-control" rows="3"></textarea>
-														</div>
-														<div class="form-group submit-btn">
-															<input type="submit" class="btn" value="Submit" name="">
-														</div>
-													</form>
-												</div>
-												<!-- leftr part end -->
-
-												<!--  right part start -->
-												<div class="col-md-4">
-													<div class="popup-img">
-														<img src="{{asset('Frontend/images/logo.png')}}" class="img-fluid">
-													</div>
-													<div class="popup-img">
-														<img src="{{asset('Frontend/images/product_4.jpg')}}" class="img-fluid">
+												<div class="col-md-6 offset-md-3 main-popup-box">
+													<i class="fas fa-times hide-popup"></i>
+													<div class="order-review-popup-box">
+														<table class="table table-striped">
+															<thead>
+																<tr>
+																	<th>Image</th>
+																	<th>Product Name</th>
+																	<th>Unit price</th>
+																	<th>Quantity</th>
+																	<th>Total</th>
+																</tr>
+															</thead>
+															<tbody>
+																@foreach($invoice->order as $key => $product)
+																<tr>
+																	<td>
+																		<img src="{{ asset('images/product/'.$product->image) }}" width="32px" alt="">
+																	</td>
+																	<td>
+																		{{ $product->product_name }} - {{$product->size}}
+																	</td>
+																	<td>
+																		{{ $product->unit_price }} tk
+																	</td>
+																	<td>
+																		{{ $product->qty }} pcs.
+																	</td>
+																	<td>
+																		{{ $product->total }} tk
+																	</td>
+																</tr>
+																@endforeach
+															</tbody>
+														</table>
 													</div>
 												</div>
-												<!--  right part end -->
-
 											</div>
 										</div>
 									</div>
-								</div>
-							</div>
-						</div>
-						<!-- order review popup end -->
-
-					</div>
-				</div>
+									<!-- order review popup end -->
+								</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+				
 			</div>
 			<!-- item end -->
 

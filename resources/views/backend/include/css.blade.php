@@ -21,3 +21,4 @@
 
 <!-- responsive css file -->
 <link rel="stylesheet" type="text/css" href="{{ asset('backend/css/responsive.css') }}"> 
+<link rel="stylesheet" type="text/css" href="{{ asset('backend/css/toastr.css') }}"> 

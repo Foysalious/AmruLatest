@@ -393,7 +393,6 @@ your next hair trim belongs?</p>
 @endsection
 
 
-
-
-
-
+@section('cart')
+<script src="{{asset('frontend/js/cart.js')}}"></script>
+@endsection

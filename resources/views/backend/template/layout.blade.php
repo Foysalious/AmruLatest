@@ -11,6 +11,8 @@
         @include('backend.include.leftsidebar')      
         @yield('body-content')
         @include('backend.include.script')
+        {!! Toastr::message() !!}
+
     </body>
 
 </html>

@@ -38,6 +38,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+        
         $contact = new Contact();
         $contact->phone=$request->phone;
         $contact->address=$request->address;

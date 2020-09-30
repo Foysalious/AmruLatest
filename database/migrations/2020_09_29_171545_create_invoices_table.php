@@ -17,7 +17,7 @@ class CreateInvoicesTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->integer('total')->unsigned();
-            $table->integer('delivery_charge')->unsigned();
+            $table->integer('delivery_charge')->unsigned()->nullable()->default(0);
             $table->integer('status')->default(1)->unsigned();
             $table->string('delivery_address');
             $table->string('phone');

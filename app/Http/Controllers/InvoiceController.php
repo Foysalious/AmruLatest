@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Backend\Product;
 use App\Models\Invoice;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 
 class InvoiceController extends Controller
 {
@@ -24,7 +27,44 @@ class InvoiceController extends Controller
      */
     public function create_order(Request $request)
     {
-        
+        $request->validate([
+            "product_id.*" => 'required' ,
+            "product_qty.*" => 'required|numeric',
+            "phone" => 'required',
+            'address' => 'required'
+        ]);
+        $invoice = new Invoice();
+        $invoice->user()->associate($request->user());
+        $invoice->delivery_charge = 100;
+        $invoice->status = 1;
+        $invoice->delivery_address = $request->address;
+        $invoice->total = 0;
+        $invoice->phone = $request->phone;
+        $invoice->order_note = $request->note;
+        if($invoice->save()){
+
+            foreach($request->product_id as $key => $product_id){
+                    $product = Product::find($product_id);
+                    $order = new Order();
+                    $order->product_name = $product->name;
+                    $order->image = $product->images[0]->image;
+                    $order->size = $product->size;
+                    $order->unit_price = $product->offer_price ? $product->offer_price : $product->regular_price;
+                    $order->qty = $request->product_qty[$key];
+                    $order->total = $order->unit_price * $order->qty;
+                    $order->invoice()->associate($invoice);
+                    if($order->save()){
+                        $invoice->total += $order->total;
+                        $invoice->save();
+                    }
+            }
+
+
+            $request->session()->forget('cart');
+            Toastr::success('Order placed successfully. We will mail you soon.');
+            return redirect()->route('index');
+            
+        }
     }
 
     /**

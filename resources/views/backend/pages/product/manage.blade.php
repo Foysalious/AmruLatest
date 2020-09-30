@@ -153,7 +153,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Size</label>
-                                        <input type="number" min="1" value="1" class="form-control" name="size">
+                                        <input type="text" class="form-control" name="size">
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">

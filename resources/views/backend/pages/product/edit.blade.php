@@ -115,8 +115,8 @@
                             <input type="number" value="{{ $product->offer_price }}" class="form-control" name="o_price">
                         </div>
                         <div class="form-group">
-                            <label>Size (kg)*</label>
-                            <input type="number" min="1" value="{{ $product->size }}" class="form-control" name="size">
+                            <label>Size</label>
+                            <input type="text"  value="{{ $product->size }}" class="form-control" name="size">
                         </div>
                         <div class="row">
                             <div class="col-md-4">

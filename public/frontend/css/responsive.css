@@ -14,8 +14,15 @@
 	transform: unset;
 }
 .banner {
-	height: 100vh;
-	padding: 50px 0;
+	height: unset;
+	padding: 0;
+}
+.count{
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 .banner .container{
 	height: 100vh;
@@ -271,6 +278,13 @@
 }
 .home-page-product-cart-carousel  .owl-nav{
 	display: none;
+}
+.count{
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 .home-page-product-cart-carousel  .owl-dots{
 	display: block;

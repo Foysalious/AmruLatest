@@ -186,7 +186,7 @@
 								<div class="col-md-12">
 									<div class="form-group address-form">
 										<label>shipping address</label>
-										<textarea type="text" class="form-control validate" rows="5" required="" name="" placeholder="street"></textarea>
+										<textarea type="text" class="form-control validate" rows="5" required="" name="address" placeholder="street"></textarea>
 									</div>
 								</div>
 							</div>
