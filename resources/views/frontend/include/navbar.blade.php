@@ -12,7 +12,7 @@
 							<img src="{{ asset('images/category/'.$category->icon_image) }}" class="img-fluid">
 						</div>
 					</a>
-					<p>{{$category->name}}</p>
+					<p style="font-weight: bold; text-align: center" >{{$category->name}}</p>
 				</div>
 				<!-- navbar item end -->
 				@endforeach

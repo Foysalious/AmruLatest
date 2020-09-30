@@ -14,8 +14,8 @@
 <!-- owl carousel js file -->
 <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script> 
 
-<!-- mice number js file -->
-<script src="{{ asset('frontend/js/nicenumber.js') }}"></script> 
+<!-- swal -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script type="text/javascript" src="{{ asset('frontend/js/step.js') }}"></script>
 
@@ -28,3 +28,5 @@
 
 <!-- the main js file -->
 <script type="text/javascript" src="{{ asset('frontend/js/main.js') }}" ></script>
+
+@yield('cart')

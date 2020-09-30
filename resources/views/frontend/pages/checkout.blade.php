@@ -2,9 +2,17 @@
 
 @section('body-content')
 
+<!-- checkout empty start -->
+<section class="empty_cart ">
+	<div class="container">
+		<img src="{{ asset('frontend/images/empty_cart.png') }}" style="display: block; margin: 0 auto; width: 50%" alt="">
+	</div>
+</section>
+<!-- checkout empty start -->
+
 
 <!-- checkout main section start -->
-<section class="checkout section-padding">
+<section class="checkout section-padding main_checkout">
 	<div class="container">
 
 		<!-- progress row start -->
@@ -50,7 +58,12 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="form-outer">
-					<form action="" method="" class="myform">
+				<form action="{{route("place_order")}}" method="POST" class="myform">
+						@csrf
+
+						<div id="cart_detail">
+
+						</div>
 						
 						<!-- billing address start -->
 						<div class="page slidepage review-order">
@@ -61,16 +74,8 @@
 								</div>
 								<div class="col-md-12">
 									<label class="custom_checkbox">
-										ship to a different address?
-										<br>
-										please send your check to store name, store street, store town,  store state / country, store postcode
-									  	<input type="checkbox">
-									  	<span class="checkmark"></span>
-									</label>
-								</div>
-								<div class="col-md-12">
-									<label class="custom_checkbox">Paypal
-									  	<input type="checkbox">
+										cash on delivery
+									  	<input type="radio" checked>
 									  	<span class="checkmark"></span>
 									</label>
 								</div>
@@ -84,114 +89,25 @@
 
 							<!-- review order row start -->
 							<div class="row border">
-								<div class="col-md-12">
-									<div class="row">
-										
-										<!-- thumbnail start -->
-										<div class="col-md-1">
-											<img src="{{asset('Frontend/images/product_4.jpg')}}" class="img-fluid">
-										</div>
-										<!-- thumbnail end -->
+								<div class="col-md-12 table-responsive">
 
-										<!-- info start -->
-										<div class="col-md-2 review-product-info">
-											<h2>brocolly</h2>
-											<p>320 taka</p>
-										</div>
-										<!-- info end -->
+									<table class="table table-striped">
+										<tbody id="cart_item_wrapper">
+											
+										</tbody>
+									</table>
 
-										<!-- total item start -->
-										<div class="col-md-6 text-center">
-											<div class="nice-number">
-												<label>Kg</label>
-												<input type="number" value="0 kg" style="width: 2ch;">
-											</div>
-										</div>
-										<!-- total item end -->
-
-										<!-- updated price start -->
-										<div class="col-md-3 updated-price">
-											<p>640 Taka</p>
-										</div>
-										<!-- updated price end -->
-
-									</div>
 								</div>
 							</div>
 							<!-- review order row end -->
-
-							<!-- review order row start -->
-							<div class="row border">
-								<div class="col-md-12">
-									<div class="row">
-										
-										<!-- thumbnail start -->
-										<div class="col-md-1">
-											<img src="{{asset('Frontend/images/9-1-170x185.jpg')}}" class="img-fluid">
-										</div>
-										<!-- thumbnail end -->
-
-										<!-- info start -->
-										<div class="col-md-2 review-product-info">
-											<h2>brocolly</h2>
-											<p>320 taka</p>
-										</div>
-										<!-- info end -->
-
-										<!-- total item start -->
-										<div class="col-md-6 text-center">
-											<div class="nice-number">
-												<label>Kg</label>
-												<input type="number" value="0 kg" style="width: 2ch;">
-											</div>
-										</div>
-										<!-- total item end -->
-
-										<!-- updated price start -->
-										<div class="col-md-3 updated-price">
-											<p>640 Taka</p>
-										</div>
-										<!-- updated price end -->
-
-									</div>
-								</div>
-							</div>
-							<!-- review order row end -->
-
-							<!-- sub total start -->
-							<div class="row border">
-								<div class="col-md-12">
-									<h2>subtotal : </h2>
-								</div>
-							</div>
-							<!-- sub total end -->
-
-							<!-- coupon code start -->
-							<div class="row border">
-								<div class="col-md-12">
-									<div class="row">
-										<div class="col-md-2 pd-0">
-											<h2>coupon code : </h2>
-										</div>
-
-										<div class="col-md-4 coupon-code">
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="coupon code" name="">
-												<button type="submit" class="btn">apply</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- coupon code end -->
 
 							<!-- total start -->
 							<div class="row border text-right">
 								<div class="col-md-12">
-									<p>free delivery</p>
+									<p>delivery charge : 100 taka</p>
 								</div>
 								<div class="col-md-12">
-									<h2>total : 1280 taka</h2>
+									<h2>total : <span id="total_price"></span> taka</h2>
 								</div>
 							</div>
 							<!-- total end -->
@@ -200,7 +116,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group text-right">
-										<p class="next-1 next">next step</p>
+										<p id="process_cart" class="next-1 next">next step</p>
 									</div>
 								</div>
 							</div>
@@ -214,17 +130,11 @@
 						<div class="page">
 
 							<div class="row">
-								<div class="col-md-12">
-									<div class="form-check">
-									    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-									    <label class="form-check-label" for="exampleCheck1">ship to a different address?</label>
-									  </div>
-								</div>
 
 								<div class="col-md-12">
 									<div class="form-group">
-										<label>order notes</label>
-										<textarea class="form-control" rows="15"></textarea>
+										<label>order notes (optional)</label>
+										<textarea class="form-control" name="order_note" rows="15"></textarea>
 									</div>
 								</div>
 							</div>
@@ -247,44 +157,26 @@
 						<div class="page ">
 
 							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>first name*</label>
-										<input type="text" class="form-control validate" required="" name="">
-									</div>
-								</div>
-
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>last name*</label>
-										<input type="text" class="form-control validate" required="" name="">
-									</div>
-								</div>
-							</div>
-							
-							<!-- company name start -->
-							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<label>company name</label>
-										<input type="text" class="form-control validate" required="" name="">
+										<label>Username*</label>
+										<input type="text" readonly class="form-control validate" value="{{ Auth::user()->name }}" required="" name="name">
 									</div>
 								</div>
 							</div>
-							<!-- company name end -->
 
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>email address</label>
-										<input type="email" class="form-control validate" required="" name="">
+										<input type="email" value="{{ Auth::user()->email }}" readonly class="form-control validate" required="" name="email">
 									</div>
 								</div>
 
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>phone*</label>
-										<input type="text" class="form-control validate" required="" name="">
+										<input type="text" class="form-control validate" required="" name="phone">
 									</div>
 								</div>
 							</div>
@@ -293,29 +185,12 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group address-form">
-										<label>address</label>
-										<input type="text" class="form-control validate" required="" name="" placeholder="street">
-										<input type="text" class="form-control validate" required="" name="" placeholder="Apartaments, Suite and etc">
+										<label>shipping address</label>
+										<textarea type="text" class="form-control validate" rows="5" required="" name="" placeholder="street"></textarea>
 									</div>
 								</div>
 							</div>
 							<!-- address end -->
-
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>post code/zip</label>
-										<input type="email" class="form-control validate" required="" name="">
-									</div>
-								</div>
-
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>town/city*</label>
-										<input type="text" class="form-control validate" required="" name="">
-									</div>
-								</div>
-							</div>
 
 							<!-- page change start -->
 							<div class="row">
@@ -341,4 +216,9 @@
 </section>
 <!-- checkout main section end -->
 
+@endsection
+
+
+@section('cart')
+<script src="{{asset('frontend/js/checkout.js')}}"></script>
 @endsection

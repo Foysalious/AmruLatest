@@ -12,6 +12,9 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CartController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Frontend\FrontendController;
+
+use App\Http\Controllers\InvoiceController;
+use App\Models\Backend\Cart;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -133,6 +136,9 @@ Route::post('/customer-register', [RegisterController::class,'registerCustomer']
 Route::post('/customer-login', [loginController::class,'loginCustomer'])->name('login.customer');
 
 Route::post('/add_to_cart', [CartController::class, 'add_to_cart']);
+Route::get('/get_cart', [CartController::class, 'get_cart']);
+Route::delete('/delete_cart/{id}', [CartController::class, 'delete_cart']);
+Route::put('/update_cart/{id}', [CartController::class, 'update_cart']);
 
 
 
@@ -167,3 +173,12 @@ Route::get('/profile',[FrontendController::class,'profile'])->name('profile')->m
 Route::get('/subcategory/{category:slug}',[FrontendController::class,'subcat'])->name('subcat');
 Route::get('/shop/{subcat:slug}',[FrontendController::class,'shop'])->name('shop');
 Route::get('/signup',[FrontendController::class,'signup'])->name('signup');
+Route::post('/place/order/for/new/order/for/user/new/order/and/welcome', [InvoiceController::class, 'create_order'])->name('place_order')->middleware('customer_auth');
+
+//Socialite Facebook and google login
+
+Route::get('/customerlogin/google', [LoginController::class, 'googleLogin']);
+Route::get('/customerlogin/google/callback', [LoginController::class, 'redirectGoogle']);
+
+Route::get('/customerlogin/facebook', [LoginController::class, 'facebookLogin']);
+Route::get('/customerlogin/facebook/callback', [LoginController::class, 'redirectFacebook']);

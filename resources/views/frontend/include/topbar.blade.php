@@ -39,7 +39,7 @@
 
 							<!-- cart number start -->
 							<div class="cart-number">
-								<p>5</p>
+								<div class="count" style="color: white;"></div>
 							</div>
 							<!-- cart number end-->
 						</li>
@@ -47,17 +47,17 @@
 
 						<li>
 							
-								@auth
-								<a href="{{ route('profile') }}">
-									<img src="{{ asset('frontend/images/user.png') }}" class="img-fluid">
-								</a>
-								
-								@else
-								<a href="{{ route('customerlogin') }}">
-									<img src="{{ asset('frontend/images/user.png') }}" class="img-fluid">
-								</a>
-								
-								@endauth
+							@auth
+							<a href="{{ route('profile') }}">
+								<img src="{{ asset('frontend/images/myUser.png') }}" width="32px" class="img-fluid">
+							</a>
+							
+							@else
+							<a href="{{ route('customerlogin') }}">
+								<img src="{{ asset('frontend/images/user.png') }}" class="img-fluid">
+							</a>
+							
+							@endauth
 							
 						</li>
 					</ul>
@@ -67,38 +67,16 @@
 				<div class="cart-item" id="cart-item" onmouseover="showCart()" onmouseout="hideCart()">
 					<table class="table table-striped">
 						<thead>
-						<tbody>
-						  <tr>
-							<td>
-								<img src="{{ asset('frontend/images/12-1-170x185.jpg') }}" width="32px" alt="">
-							</td>
-							<td>
-								<p>product name</p>
-								<p>150 taka</p>
-								<p>3x</p>
-							</td>
-							<td>
-								<button class=""><i class="fas fa-times"></i></button>
-							</td>
-						  </tr>
-						  <tr>
-							<td>
-								<img src="{{ asset('frontend/images/9-1-170x185.jpg') }}" width="32px" alt="">
-							</td>
-							<td>
-								<p>product name</p>
-								<p>150 taka</p>
-								<p>3x</p>
-							</td>
-							<td>
-								<button class=""><i class="fas fa-times"></i></button>
-							</td>
-						  </tr>
+						<tbody class="cart">
+						  
 						</tbody>
 					</table>
 					<div class="cart-button">
-						<button class="view-cart">view cart</button>
-						<button class="view-checkout">checkout</button>
+						@auth
+						<a href="{{ route('checkout') }}" class="view-checkout">checkout</a>
+						@else
+						<a href="{{ route('customerlogin') }}" class="view-checkout">checkout</a>
+						@endauth
 					</div>
 				</div>
 				<!-- cart dropdown list end -->
@@ -191,40 +169,14 @@
 	<!-- show item end -->
 
 	<!-- show item start -->
-	<div class="show-item p4">
+	<div class="show-item p4 s">
 		<table class="table table-striped">
 			<thead>
-			<tbody>
-			  <tr>
-				<td>
-					<img src="{{ asset('frontend/images/12-1-170x185.jpg') }}" width="32px" alt="">
-				</td>
-				<td>
-					<p>product name</p>
-					<p>150 taka</p>
-					<p>3x</p>
-				</td>
-				<td>
-					<button class=""><i class="fas fa-times"></i></button>
-				</td>
-			  </tr>
-			  <tr>
-				<td>
-					<img src="{{ asset('frontend/images/9-1-170x185.jpg') }}" width="32px" alt="">
-				</td>
-				<td>
-					<p>product name</p>
-					<p>150 taka</p>
-					<p>3x</p>
-				</td>
-				<td>
-					<button class=""><i class="fas fa-times"></i></button>
-				</td>
-			  </tr>
+			<tbody class="cart">
+			  
 			</tbody>
 		</table>
 		<div class="cart-button">
-			<button class="view-cart">view cart</button>
 			<button class="view-checkout">checkout</button>
 		</div>
 	</div>
@@ -262,7 +214,7 @@
 			<div class="col-2 show-item-mob" id="p4">
 				<!-- cart number start -->
 				<div class="cart-number">
-					<p>5</p>
+					<div class="count" style="color: white;"></div>
 				</div>
 				<!-- cart number end-->
 				<img src="{{ asset('frontend/images/cart.png') }}" class="img-fluid">

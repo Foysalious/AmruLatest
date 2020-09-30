@@ -1,22 +1,3 @@
-//add to cart functionality
-$(document).ready(function(){
-    
-    $("#addToCart").click(function(e){   
-
-      
-        let id = e.target.dataset.id
-        
-   
-        axios.post('/add_to_cart', {id}).then(res => {
-            console.log(res.data)
-        })
-        
-
-        
-        
-    })
-})
-
 
 
 
@@ -234,11 +215,6 @@ $(document).ready(function(){
 })
 //home page product filtering js
 
-$(function(){
-
-  $('input[type="number"]').niceNumber();
-
-});
 
 var x, i, j, l, ll, selElmnt, a, b, c;
 /*look for any elements with the class "custom-select":*/

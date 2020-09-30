@@ -31,6 +31,9 @@ p{
 	font-size: 13px;
 	color: #989898;
 }
+button:focus{
+	outline: none;
+}
 label{
 	margin: 0;
 	padding: 0;
@@ -123,6 +126,10 @@ span del{
 }
 h2 del{
 	color: #dfdfdf!important;
+}
+button{
+	border: none;
+	text-transform: capitalize;
 }
 /* Global css end */
 
@@ -823,6 +830,13 @@ h2 del{
     border-radius: 50px;
     transition: 0.4s ease-in-out;
 }
+.addToCart{
+	background: #d92173;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    transition: 0.4s ease-in-out;
+}
 .product-hover a{
 	transition: 0.4s ease-in-out;
 	display: block;
@@ -1195,51 +1209,7 @@ h2 del{
 	color: #d92173 ;
 	font-weight: 600;
 }
-.nice-number {
-  display: inline-flex;
-  justify-content: stretch;
-}
 
-.nice-number input {
-  vertical-align: middle;
-  -moz-appearance: textfield;
-  box-sizing: content-box;
-  margin: 0;
-  text-align: center;
-}
-
-.nice-number input::-webkit-inner-spin-button,
-.nice-number input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-.nice-number[type=button]:not(:disabled), 
-.nice-number[type=reset]:not(:disabled), 
-.nice-number[type=submit]:not(:disabled), 
-button:not(:disabled){
-	border: 1px solid #e5e5e5;
-}	
-.nice-number input{
-	border: 1px solid #e5e5e5;
-	width: 50px!important;
-	font-family: 'Roboto', sans-serif;
-	text-transform: capitalize;
-	font-size: 13px;
-	color: #989898;
-}
-.nice-number button:focus{
-	outline: none!important;
-}
-.nice-number{
-	position: relative;
-}
-.nice-number label{
-	position: absolute;
-    left: 55%;
-    top: 50%;
-    transform: translateY(-50%);
-   	z-index: 2;
-}
 .updated-price p{
 	color: #d92173 ;
 	font-weight: 600;
@@ -1263,7 +1233,14 @@ button:not(:disabled){
     border-radius: unset;
     border: unset!important;
 }
-
+.filter-button{
+	position: absolute;
+    bottom: 0;
+    border: none;
+    padding: 10px;
+    background: #dd2173;
+    color: white;
+}
 .custom_checkbox {
   display: block;
   position: relative;
@@ -2070,14 +2047,9 @@ html .ui-button.ui-state-disabled:active:hover{
 /* login page css start */
 .login{
 	position: relative;
-	height: 100vh;
+	padding: 100px 0;
 }
 .login-box{
-	 position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    width: 30%;
     box-shadow: #e5e5e5 0px 0px 38px 10px;
     padding: 15px;
     border-radius: 15px;
@@ -2098,11 +2070,6 @@ html .ui-button.ui-state-disabled:active:hover{
     border-radius: 30px;
     padding: 10px 25px;
 }
-.login-bottom{
-	background: #d92173;
-	background: #d92173;
-    border-radius: 0px 0px 15px 15px;
-}
 .login-bottom ul {
 	text-align: center;
 	padding: 15px 0;
@@ -2117,6 +2084,24 @@ html .ui-button.ui-state-disabled:active:hover{
 }
 .login-bottom ul li a img{
 	width: 50%;
+}
+.login-bottom .facebook a{
+	background: #0676E8;
+    padding: 10px 15px 10px 0px;
+    color: white;
+}
+.login-bottom .facebook a .fab{
+	padding: 10px;
+    color: white;
+}
+.login-bottom .google a{
+	background: #D34836;
+    padding: 10px 15px 10px 0px;
+    color: white;
+}
+.login-bottom .google a .fab{
+	padding: 10px;
+    color: white;
 }
 /* login page css end */
 

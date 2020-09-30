@@ -152,7 +152,7 @@
                                         <input type="number" class="form-control" name="o_price">
                                     </div>
                                     <div class="form-group">
-                                        <label>Size (kg)*</label>
+                                        <label>Size</label>
                                         <input type="number" min="1" value="1" class="form-control" name="size">
                                     </div>
                                     <div class="row">
@@ -196,13 +196,13 @@
                                             <div class="form-group">
                                                 <label>product status</label>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio"  id="three" value="1" name="status">
+                                                    <input class="form-check-input" type="radio" checked id="three" value="1" name="status">
                                                     <label class="form-check-label" for="three">
                                                       active
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio"  checked id="three" value="0" name="status">
+                                                    <input class="form-check-input" type="radio"   id="three" value="0" name="status">
                                                     <label class="form-check-label" for="three">
                                                       inactive
                                                     </label>

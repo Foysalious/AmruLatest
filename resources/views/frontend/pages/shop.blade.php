@@ -46,69 +46,57 @@
 					<!-- price filter start -->
 					<div class="price-filter">
 						<h2>filter by price</h2>
-					
 
-						<!-- price filtering -->
-	                    <div class="shop-filter">
-	                        <div id="sliderpc"></div>
-	                    </div>
-	                    <!-- price filtering -->
+						<form action="">
+							<div class="row">
 
-	                    <div class="row">
-	                    	<div class="col-md-8">
-	                    		<p>Price : <span id="spanOutputpc"></span> </p>
-	                    	</div>
-	                    	<div class="col-md-4 filter">
-	                    		<p>filter</p>
-	                    	</div>
-	                    </div>
+								<!-- min price start -->
+								<div class="col-md-4">
+									<label>Min</label>
+									<input type="number"  class="form-control" required>
+								</div>
+								<!-- min price end -->
+
+								<!-- max price start -->
+								<div class="col-md-4">
+									<label>Max</label>
+									<input type="number"  class="form-control" required>
+								</div>
+								<!-- max price end -->
+
+								<!-- submit start -->
+								<div class="col-md-4">
+									<button class="filter-button">Filter</button>
+								</div>
+								<!-- submit end -->
+
+							</div>
+
+						</form>
+						
 
 	                </div>
 					<!-- price filter end -->
 
                     <!-- type start -->
                     <div class="type">
-                    	<h2>type</h2>
-                    	<form>
-                    		<label class="custom_checkbox">food
-							  	<input type="checkbox">
-							  	<span class="checkmark"></span>
-							</label>
-
-							<label class="custom_checkbox">food
-							  	<input type="checkbox">
-							  	<span class="checkmark"></span>
-							</label>
-
-							<label class="custom_checkbox">food
-							  	<input type="checkbox">
-							  	<span class="checkmark"></span>
-							</label>
-
-							<label class="custom_checkbox">food
-							  	<input type="checkbox">
-							  	<span class="checkmark"></span>
-							</label>
-                    	</form>
+						<h2>All item</h2>
+						@foreach(App\Models\Backend\Category::orderBy('id','asc')->where('parent_id','!=',0)->where('is_delete',0)->get() as $subCat) 
+                    	<a href="{{route('shop',$subCat->slug)}}">
+							<label class="custom_checkbox"
+							 
+							onclick="event.target.parentNode.click();">
+								{{ $subCat->name }}
+								<input type="checkbox"
+								
+								>
+								<span class="checkmark"></span>
+						  </label>
+						</a>
+						@endforeach
                     </div>
                     <!-- type end -->
 
-                     <!-- organic or start -->
-                    <div class="type">
-                    	<h2>organic or</h2>
-                    	<form>
-                    		<label class="custom_checkbox">organic
-							  	<input type="checkbox">
-							  	<span class="checkmark"></span>
-							</label>
-
-							<label class="custom_checkbox">non organic
-							  	<input type="checkbox">
-							  	<span class="checkmark"></span>
-							</label>
-                    	</form>
-                    </div>
-                    <!-- organic or end -->
 
 				</div>
 
@@ -173,9 +161,21 @@
 									<!-- go product details -->
 									
 									<div class="product-item-cart">
-										<a href="">
-											<img src="{{asset('Frontend/images/cart-bag.png')}}"> add to bag
-										</a>
+										@if( $product->quantity > 0 )
+									<button data-id="{{ $product->id }}" data-image="{{ $product->images[0]->image }}" data-name="{{ $product->name }}" 
+										@if( $product->offer_price == NULL )
+										data-price="{{ $product->regular_price }}"
+										@else
+										data-price="{{ $product->offer_price }}"
+										@endif 
+										class="addToCart">
+											<img src="{{ asset('frontend/images/cart-bag.png') }}"> add to bag
+									</button>
+								@else
+								<button class="addToCart disabled">
+									out of stock
+								</button>
+								@endif
 									</div>
 									<ul>
 										<li><i class="fas fa-star"></i></li>
