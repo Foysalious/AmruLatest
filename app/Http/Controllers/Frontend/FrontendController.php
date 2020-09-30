@@ -58,6 +58,23 @@ class FrontendController extends Controller
             return view('frontend.pages.shop', compact('subcat','products','rproducts'));
     }
 
+    public function shopFilter(Request $request, Category $subcat) {
+        $query = Product::orderBy('id','desc')->where('cat_id',$subcat->id);
+        
+       
+        if($request->min_price && $request->max_price){
+            // This will only executed if you received any price
+            // Make you you validated the min and max price properly
+            $maxPrice=$request->max_price;
+            $minPrice=$request->min_price;
+            $query = $query->where('regular_price','>=',$request->min_price);
+            $query = $query->where('regular_price','<=',$request->max_price);
+        }
+        $products = $query->paginate(6);
+        return view('frontend.pages.price_filter', compact('products','subcat','maxPrice','minPrice'));
+      }
+
+
      //signup show
      public function signup(){
         return view('frontend.pages.signup');

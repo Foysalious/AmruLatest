@@ -191,6 +191,7 @@ Route::get('/profile',[FrontendController::class,'profile'])->name('profile')->m
 Route::get('/subcategory/{category:slug}',[FrontendController::class,'subcat'])->name('subcat');
 Route::get('/shop/{subcat:slug}',[FrontendController::class,'shop'])->name('shop');
 Route::get('/signup',[FrontendController::class,'signup'])->name('signup');
+Route::get('/priceFilter/{subcat:slug}/',[FrontendController::class,'shopFilter'])->name('shopFilter');
 Route::post('/place/order/for/new/order/for/user/new/order/and/welcome', [InvoiceController::class, 'create_order'])->name('place_order')->middleware('customer_auth');
 
 //Socialite Facebook and google login

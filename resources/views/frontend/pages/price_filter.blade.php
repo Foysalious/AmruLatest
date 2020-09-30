@@ -53,14 +53,14 @@
 								<!-- min price start -->
 								<div class="col-md-4">
 									<label>Min</label>
-								<input type="number"  class="form-control" required name="min_price" >
+								<input type="number"  class="form-control" required name="min_price" value="{{$minPrice}}">
 								</div>
 								<!-- min price end -->
 
 								<!-- max price start -->
 								<div class="col-md-4">
 									<label>Max</label>
-									<input type="number"  class="form-control" required name="max_price">
+									<input type="number"  class="form-control" required name="max_price" value="{{$maxPrice}}">
 								</div>
 								<!-- max price end -->
 
