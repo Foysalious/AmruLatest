@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Laravel\Socialite\Facades\Socialite;
 
 
 class LoginController extends Controller
@@ -79,6 +80,26 @@ class LoginController extends Controller
 
         
 
+    }
+
+    public function redirectToFacebookProvider()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleFacebookProviderCallback()
+    {
+        $user = Socialite::driver('facebook')->user();
+
+        dd($user);
+
+
+        // $user->token;
     }
 
     

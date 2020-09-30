@@ -28,13 +28,6 @@
 						@endif
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-6 offset-md-3">
-						<a href="index.php">
-							<img src="{{ asset('frontend/images/logo.png') }}" class="img-fluid">
-						</a>
-					</div>
-				</div>
 				<form action="{{ route('login.customer') }}" method="post">
 					@csrf
 					<div class="form-group">
@@ -51,27 +44,28 @@
 						<button class="btn" type="submit">login</button>
 					</div>
 				</form>
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<a href="{{ route('signup') }}" style="display: inline-block;margin: 15px 0;">not yet registered? go to register page</a>						
-					</div>
-				</div>
 				<div class="row login-bottom">
 					<div class="col-md-12">
 						<ul>
-							<li>
-								<a href="">
-									<img src="{{asset('Frontend/images/login.png')}}">
-								</a>
+							<li class="facebook">
+								<a href="http://localhost:8000/login/facebook">
+									<i class="fab fa-facebook-f"></i> facebook
+								</a> 
 							</li>
-							<li>
+							<li class="google">
 								<a href="">
-									<img src="{{asset('Frontend/images/loginfb.png')}}">
+									<i class="fab fa-google"></i> google
 								</a>
 							</li>
 						</ul>
 					</div>
 				</div>
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<a href="{{ route('signup') }}" style="display: inline-block;margin: 15px 0;">not yet registered? go to register page</a>						
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</div>

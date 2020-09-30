@@ -2075,11 +2075,6 @@ html .ui-button.ui-state-disabled:active:hover{
     border-radius: 30px;
     padding: 10px 25px;
 }
-.login-bottom{
-	background: #d92173;
-	background: #d92173;
-    border-radius: 0px 0px 15px 15px;
-}
 .login-bottom ul {
 	text-align: center;
 	padding: 15px 0;
@@ -2094,6 +2089,24 @@ html .ui-button.ui-state-disabled:active:hover{
 }
 .login-bottom ul li a img{
 	width: 50%;
+}
+.login-bottom .facebook a{
+	background: #0676E8;
+    padding: 10px 15px 10px 0px;
+    color: white;
+}
+.login-bottom .facebook a .fab{
+	padding: 10px;
+    color: white;
+}
+.login-bottom .google a{
+	background: #D34836;
+    padding: 10px 15px 10px 0px;
+    color: white;
+}
+.login-bottom .google a .fab{
+	padding: 10px;
+    color: white;
 }
 /* login page css end */
 
