@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Role;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Hash;
 
 
 class LoginController extends Controller
@@ -82,7 +84,57 @@ class LoginController extends Controller
 
     }
 
-    public function redirectToFacebookProvider()
+    public function googleLogin()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function redirectGoogle(Request $request)
+    {
+
+        $user = Socialite::driver('google')->user();
+
+
+        $getAllUser = User::where('email', $user->email)->first();
+
+
+
+        if( !$getAllUser ){
+            $newUser = new User();
+            $newUser->name  = $user->name;
+            $newUser->email = $user->email;
+            $newUser->password  = Hash::make('12345678');
+            $newUser->save();
+            $role = Role::find(2);
+            $newUser->roles()->attach($role);
+            if($newUser->id){           
+                if(Auth::loginUsingId($newUser->id,false)){
+                    return redirect()->route('index');
+                }else{
+                    $request->session()->flash('login', 'Please enter correct information!');
+                    return redirect()->route('customerlogin');
+                }
+            }
+        }
+        else{
+            if(Auth::loginUsingId($getAllUser->id,false)){
+                return redirect()->route('index');
+            }else{
+                $request->session()->flash('login', 'Please enter correct information!');
+                return redirect()->route('customerlogin');
+            }
+        }
+
+
+        // $user->token;
+    }
+
+    public function facebookLogin()
     {
         return Socialite::driver('facebook')->redirect();
     }
@@ -92,14 +144,45 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleFacebookProviderCallback()
+    public function redirectFacebook(Request $request)
     {
         $user = Socialite::driver('facebook')->user();
+        if( $user->email == NULL ){
+            $request->session()->flash('noEmail', 'The email address field was not returned. This may be because the email address was missing or invalid or hasnt been confirmed.');
+            return back();
+        }
+        else{
 
-        dd($user);
+            $getAllUser = User::where('email', $user->email)->first();
 
 
-        // $user->token;
+
+            if( !$getAllUser ){
+                $newUser = new User();
+                $newUser->name  = $user->name;
+                $newUser->email = $user->email;
+                $newUser->password  = Hash::make('12345678');
+                $newUser->save();
+                $role = Role::find(2);
+                $newUser->roles()->attach($role);
+                if($newUser->id){           
+                    if(Auth::loginUsingId($newUser->id,false)){
+                        return redirect()->route('index');
+                    }else{
+                        $request->session()->flash('login', 'Please enter correct information!');
+                        return redirect()->route('customerlogin');
+                    }
+                }
+            }
+            else{
+                if(Auth::loginUsingId($getAllUser->id,false)){
+                    return redirect()->route('index');
+                }else{
+                    $request->session()->flash('login', 'Please enter correct information!');
+                    return redirect()->route('customerlogin');
+                }
+            }
+        }
     }
 
     

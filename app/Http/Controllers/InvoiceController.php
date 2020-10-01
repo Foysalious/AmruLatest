@@ -7,7 +7,10 @@ use App\Models\Invoice;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
-
+use App\Mail\CustomerOrderPlace;
+use Illuminate\Support\Facades\Mail;
+use Excel;
+use App\Exports\ReportExport;
 class InvoiceController extends Controller
 {
     /**
@@ -27,6 +30,7 @@ class InvoiceController extends Controller
      */
     public function create_order(Request $request)
     {
+        
         $request->validate([
             "product_id.*" => 'required' ,
             "product_qty.*" => 'required|numeric',
@@ -59,9 +63,14 @@ class InvoiceController extends Controller
                     }
             }
 
-
+        
+            
             $request->session()->forget('cart');
             Toastr::success('Order placed successfully. We will mail you soon.');
+            
+            Mail::to($invoice->user->email)->send( new CustomerOrderPlace($invoice,'Your order is placed. Please wait for confirmation') );
+            Mail::to('amru@gmail.com')->send( new CustomerOrderPlace($invoice,'Order placed') );
+
             return redirect()->route('index');
             
         }
@@ -78,6 +87,22 @@ class InvoiceController extends Controller
         $request->validate([
 
         ]);
+    }
+
+
+
+
+
+    public function export(){
+        $data = [
+            ['name'=> 'Imran Hossain', 'email' => 'gargximran@gmail.com'],
+            ['name'=> 'Foysal Rahnam', 'email'=> 'foysal@gamil.com']
+        ];
+
+        $export = new ReportExport();
+        return Excel::download($export->getDownloadByQuery($data), 'report.csv');
+
+
     }
 
     /**

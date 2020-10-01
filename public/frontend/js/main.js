@@ -576,3 +576,40 @@ $(document).ready(function(){
 
     })
 })
+
+
+
+
+
+
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+   });
+
+
+
+  //create
+  $('#createAd').submit(function(e){
+    e.preventDefault();
+
+    var formData = new FormData(this);
+
+    $.ajax({
+      method: 'POST',
+      url: '/api/letter',
+      data: formData,
+      cache:false,
+      contentType: false,
+      processData: false, 
+      dataType: 'json',
+      success: function(data){
+          $("#createAd input").val('')
+          swal('','Email subscribed','success');
+      },
+
+    })
+
+  })

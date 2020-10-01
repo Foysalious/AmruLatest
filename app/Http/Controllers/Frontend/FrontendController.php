@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Backend\Category;
 use Illuminate\Http\Request;
 use App\Models\Backend\Product;
+use App\Models\Frontend\newsLetter;
 
 class FrontendController extends Controller
 {
@@ -73,6 +74,24 @@ class FrontendController extends Controller
         $products = $query->paginate(6);
         return view('frontend.pages.price_filter', compact('products','subcat','maxPrice','minPrice'));
       }
+
+      public function storeNewsletter(Request $request){
+        $news = new newsLetter();
+
+        $news->email  = $request->email;
+        $news->save();
+        return Response()->json(
+            $news
+        , 200);
+    }
+
+    public function search(Request $request)
+    {
+      $text = $request->name;
+      $search=Product::orWhere('name', 'LIKE', "%$request->name%")->orWhere('slug', 'LIKE', "%$request->name%")->orWhere('description', 'LIKE', "%$request->name%")->paginate(12);
+        // return $search;
+    return view('frontend.pages.search',compact('search','text'));
+    }
 
 
      //signup show

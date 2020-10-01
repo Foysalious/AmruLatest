@@ -16,13 +16,14 @@
 			<!-- search option start -->
 			<div class="col-md-6">
 				<div class="topbar-bottom-search">
-					<form action="" method="">
+					<form action="{{route('search')}}" method="POST">
+						@csrf
 						<div class="form-group">
-							<input type="search" class="form-control" name="" placeholder="Search For Products">
+							<input type="search" class="form-control" name="name" placeholder="Search For Products">
 						</div>
 
 						<div class="form-group search-button">
-							<input type="submit" class="form-control" value="Search" name="">
+							<input type="submit" class="form-control" value="Search">
 						</div>
 					</form>
 				</div>

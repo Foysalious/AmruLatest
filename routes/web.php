@@ -13,9 +13,11 @@ use App\Http\Controllers\Backend\CartController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\LinkController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Backend\SellingHistory;
 use App\Http\Controllers\Frontend\FrontendController;
 
 use App\Http\Controllers\InvoiceController;
+
 use App\Models\Backend\Cart;
 use Illuminate\Support\Facades\Auth;
 
@@ -113,6 +115,38 @@ Route::group(['prefix'=>'dashboard', 'middleware'=>['auth','can:superadmin']], f
     });
     //supplier route end
 
+    //selling history route start
+    Route::group(['prefix'=>'selling-history'],function(){
+
+        //pending order start
+        Route::get('/pending',[SellingHistory::class,'pending'])->name('pending.show');
+        Route::get('/show-invoice/{invoice:id}',[SellingHistory::class,'showInvoice'])->name('invoice.show');
+        Route::get('/confirmed-order/{invoice:id}',[SellingHistory::class,'confirmOrder'])->name('confirm-order');
+        //pending order end
+
+        //confirmed order start
+        Route::get('/confirmed',[SellingHistory::class,'confirmed'])->name('confirmed.show');
+        Route::get('/show-confirmed-invoice/{invoice:id}',[SellingHistory::class,'showConfirmedInvoice'])->name('confirmed.invoice.show');
+        Route::get('/delivered-order/{invoice:id}',[SellingHistory::class,'deliveredOrder'])->name('delivered-order');
+        //confirmed order end
+
+        //delivered order show start
+        Route::get('/delivered',[SellingHistory::class,'delivered'])->name('delivered.show');
+        Route::get('/show-delivered-invoice/{invoice:id}',[SellingHistory::class,'showDeliveredInvoice'])->name('delivered.invoice.show');
+        //delivered order show end
+
+        //cancelled order
+        Route::get('/cancel',[SellingHistory::class,'cancel'])->name('cancel.show');
+        Route::get('/show-cancel-invoice/{invoice:id}',[SellingHistory::class,'showCancelInvoice'])->name('cancel.invoice.show');
+        Route::get('/cancelled-order/{invoice:id}',[SellingHistory::class,'cancelledOrder'])->name('cancelled-order');
+
+
+
+
+    });
+    
+    //selling history route end
+
     //purchase history route start
     Route::group(['prefix' => 'purchase-history'], function(){
         Route::get('/',[SupplierController::class, 'p_history'])->name('phistory.show');
@@ -162,8 +196,13 @@ Route::put('/update_cart/{id}', [CartController::class, 'update_cart']);
 
 
 
+//Socialite Facebook and google login
+	
+Route::get('/customerlogin/google', [LoginController::class, 'googleLogin']);
+Route::get('/customerlogin/google/callback', [LoginController::class, 'redirectGoogle']);
 
-
+Route::get('/customerlogin/facebook', [LoginController::class, 'facebookLogin']);
+Route::get('/customerlogin/facebook/callback', [LoginController::class, 'redirectFacebook']); 
 
 
 
@@ -191,10 +230,16 @@ Route::get('/profile',[FrontendController::class,'profile'])->name('profile')->m
 Route::get('/subcategory/{category:slug}',[FrontendController::class,'subcat'])->name('subcat');
 Route::get('/shop/{subcat:slug}',[FrontendController::class,'shop'])->name('shop');
 Route::get('/signup',[FrontendController::class,'signup'])->name('signup');
-Route::get('/priceFilter/{subcat:slug}/',[FrontendController::class,'shopFilter'])->name('shopFilter');
+Route::post('/priceFilter/{subcat:slug}/',[FrontendController::class,'shopFilter'])->name('shopFilter');
 Route::post('/place/order/for/new/order/for/user/new/order/and/welcome', [InvoiceController::class, 'create_order'])->name('place_order')->middleware('customer_auth');
+Route::post('/search',[FrontendController::class,'search'])->name('search');
 
 //Socialite Facebook and google login
 
 Route::get('/login/facebook', [LoginController::class, 'redirectToFacebookProvider']);
 Route::get('/login/facebook/callback', [LoginController::class, 'handleFacebookProviderCallback']);
+
+
+Route::get('/excel', [InvoiceController::class, 'export']);
+
+

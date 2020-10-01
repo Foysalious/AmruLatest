@@ -47,25 +47,26 @@
 					<div class="price-filter">
 						<h2>filter by price</h2>
 
-						<form action="{{(route('shopFilter',$subcat->slug))}}">
+						<form action="{{(route('shopFilter',$subcat->slug))}}" method="post">
+							@csrf
 							<div class="row">
 
 								<!-- min price start -->
-								<div class="col-md-4">
+								<div class="col-md-6">
 									<label>Min</label>
 								<input type="number"  class="form-control" required name="min_price" >
 								</div>
 								<!-- min price end -->
 
 								<!-- max price start -->
-								<div class="col-md-4">
+								<div class="col-md-6">
 									<label>Max</label>
 									<input type="number"  class="form-control" required name="max_price">
 								</div>
 								<!-- max price end -->
 
 								<!-- submit start -->
-								<div class="col-md-4">
+								<div class="col-md-12">
 									<button class="filter-button">Filter</button>
 								</div>
 								<!-- submit end -->

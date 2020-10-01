@@ -994,11 +994,14 @@ a:hover{
 .signup-news-form{
 	position: relative;
 }
-.signup-newsletter-button img{
+.signup-newsletter-button{
 	position: absolute;
     top: 50%;
-    right: 15px;
     transform: translateY(-50%);
+    background: #d92173;
+    right: 0;
+    height: 100%;
+    border: 1px solid white;
 }
 /* sign up newsletter css end */
 
@@ -1183,8 +1186,8 @@ a:hover{
     cursor: pointer;
 }
 .Submit{
-	display: inline!important;
-    width: unset!important;
+	display: inline !important;
+    width: unset !important;
     background: linear-gradient(to bottom, #5A256C 0%, #DD2173 100%);
     padding: 8px 15px;
     cursor: pointer;
@@ -1237,12 +1240,12 @@ a:hover{
     border: unset!important;
 }
 .filter-button{
-	position: absolute;
-    bottom: 0;
     border: none;
     padding: 10px;
     background: #dd2173;
-    color: white;
+	color: white;
+	width: 100%;
+	margin-top: 15px ;
 }
 .custom_checkbox {
   display: block;
@@ -2055,13 +2058,10 @@ html .ui-button.ui-state-disabled:active:hover{
 /* login page css start */
 .login{
 	position: relative;
-	height: 100vh;
+	padding: 100px 0;
 }
 .login-box{
-	 position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
+	
     width: 30%;
     box-shadow: #e5e5e5 0px 0px 38px 10px;
     padding: 15px;

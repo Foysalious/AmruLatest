@@ -137,6 +137,49 @@
                         </li>
                         <!-- nav drop down view end -->
 
+                        <!-- nav drop down view start -->
+                        <li>
+                            <div class="row navbar-dropdown-top" id="2">
+                            <div class="col-md-10  col-10">
+                                Selling History              
+                            </div>    
+                            <div class="col-md-2 col-2 text-right">
+                                <i class="fas fa-angle-down"></i>                            
+                            </div>                      
+                            </div>
+                            <div class="row navbar-dropdown-child 2">
+                            <div class="col-md-12">
+                                <ul>
+                                    <li>
+                                        <a href="{{ route('pending.show') }}">
+                                            <i class="fas fa-history" style="margin-right: 5px"></i>
+                                            Pending Order
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('confirmed.show') }}">
+                                            <i class="fas fa-check" style="margin-right: 5px"></i>
+                                            confirmed Order
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('delivered.show') }}">
+                                            <i class="fas fa-truck-loading" style="margin-right: 5px"></i>
+                                            delivered Order
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('cancel.show') }}">
+                                            <i class="fas fa-window-close" style="margin-right: 5px"></i>
+                                            cancelled Order
+                                        </a>
+                                    </li>
+                                </ul>                  
+                            </div>                        
+                            </div>
+                        </li>
+                        <!-- nav drop down view end -->
+
                         <!-- nav single view start -->
                         <li >
                             <a href="{{ route('bannerShow') }}">

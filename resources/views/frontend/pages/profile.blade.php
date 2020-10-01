@@ -78,7 +78,7 @@
 									@endif
 								</td>
 								<td>
-									<button class="view-order show-review-popup" id="{{ $invoice->id }}">view order</button>
+									<button class="view-order show-review-popup" id="{{ $invoice->id }}">view detail</button>
 									<!-- order review popup start -->
 									<div class="order-review-popup {{ $invoice->id }}">
 										<div class="container">

@@ -685,14 +685,14 @@
 
 			<!--right part start -->
 			<div class="col-md-6">
-				<form action="" method="" class="signup-news-form">
+				<form id="createAd" method="POST" class="signup-news-form">
 					<div class="form-group">
-						<input type="email" class="form-control" placeholder="Enter your e-mail address" name="">
+						<input type="email" class="form-control" placeholder="Enter your e-mail address" name="email">
 					</div>
 					<div class="form-group">
-						<a href="" class="signup-newsletter-button">
+						<button type="submit" class="signup-newsletter-button">
 							<img src="{{ asset('frontend/images/signup_newsletter.png') }}" class="img-fluid">
-						</a>
+						</button>
 					</div>
 				</form>
 			</div>

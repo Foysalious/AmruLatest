@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
-
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -10,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
 class RegisterController extends Controller
 {
     /*
@@ -23,9 +20,7 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
     use RegistersUsers;
-
     /**
      * Where to redirect users after registration.
      *
@@ -33,7 +28,6 @@ class RegisterController extends Controller
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
     protected $redirectTo = 'dashboard/';
-
     /**
      * Create a new controller instance.
      *
@@ -43,15 +37,11 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
-
     //superadmin registration 
     public function registerSuperAdmin(Request $request){
-
         $getAllUser = User::orderBy('id','asc')->get();
-
         if( count($getAllUser) == NULL ){
             $this->validator($request->all())->validate();
-
             $user = User::create([
                 'name' => $request['name'],
                 'email' => $request['email'],
@@ -66,16 +56,12 @@ class RegisterController extends Controller
             return redirect()->route('register')->with('registerFailed', 'You can not register more than one super admin');
         }
     }
-
-
     public function registerCustomer(Request $request){
-
         $request->validate([
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
         ]);
-        
         $user = User::create([
             'name' => $request['name'],
             'email' => $request['email'],
@@ -85,9 +71,7 @@ class RegisterController extends Controller
         $user->roles()->attach($role);
         $request->session()->flash('registrationSuccess','Successfully registered');
         return redirect()->intended('customerlogin');
-        
     }
-
     /**
      * Get a validator for an incoming registration request.
      *
@@ -102,7 +86,6 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:4', 'confirmed'],
         ]);
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -116,10 +99,5 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-
-        
     }
-
-    
-
 }
