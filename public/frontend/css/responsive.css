@@ -42,9 +42,6 @@
 .topbar-bottom-mob{
 	display: block;
 }
-.product-hover {
-    height: 300px;
-}
 .product-item-01 ul{
 	text-align: center;
 }
@@ -150,10 +147,7 @@
 }
 
 .product-quick-view-main-box{
-	top: 0;
-    transform: translateY(0);
     width: 100%;
-    left: 0;
 }
 .product-quick-view{
 	overflow: scroll;
@@ -222,6 +216,18 @@
 	display: inline-block;
 	margin: 10px 0;
 }
+.product-main-img{
+	position: unset;
+    top: unset;
+    transform: unset;
+}
+.about .right{
+	position: unset;
+	transform: unset;
+}
+.profile-page{
+	padding: 30px 0;
+}
 }
 
 
@@ -263,14 +269,18 @@
 	transform: unset;
 }
 .banner {
-	height: 100vh;
-	padding: 50px 0;
+	height: unset;
 }
 .banner .container{
-	height: 100vh;
+	height: unset;
 }
+
 .topbar-mob{
 	display: block;
+}
+.product-item-01 .product-item-cart button{
+	padding: 10px;
+	font-size: 10px;
 }
 .cart-wishlist ul{
 	margin-top: 0;
@@ -292,8 +302,18 @@
 .topbar-bottom-mob{
 	display: block;
 }
-.product-hover {
-    height: 250px;
+.product-hover-item .fa-eye{
+	display: block;;
+}
+.product-main-img{
+	position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.detail-img{
+	position: unset!important;
+    top: 50%;
+    transform: unset!important;
 }
 .product-item-01 ul{
 	text-align: center;
@@ -459,6 +479,14 @@
 	display: inline-block;
 	margin: 10px 0;
 }
+.detail-img{
+	position: unset!important;
+    top: 50%;
+    transform: unset!important;
+}
+.profile-page{
+	padding: 30px 0;
+}
 }
 
 
@@ -497,6 +525,9 @@
 }
 .banner .container{
 	height: 100vh;
+}
+.product-hover-item .fa-eye{
+	display: block;;
 }
 .topbar-mob{
 	display: block;
@@ -546,6 +577,16 @@
 .signup-box {
     width: 90%;
 }
+.product-main-img{
+	position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.detail-img{
+	position: unset!important;
+    top: 50%;
+    transform: unset!important;
+}
 }
 
 
@@ -564,7 +605,22 @@
 .produc-quick-view-img .fas {
     bottom: 80%!important;
 }
-
+.product-hover-item .fa-eye{
+	display: block;;
+}
+.product-main-img{
+	position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.detail-img{
+	position: unset!important;
+    top: 50%;
+    transform: unset!important;
+}
+.profile-page{
+	padding: 50px 0;
+}
 }
 
 
@@ -596,11 +652,24 @@
     width: 240px!important; 
     margin: 0!important; 
 }
+.product-main-img{
+	position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
 }
 
 @media (min-width: 1024px) and (max-width: 1140px) {
 .signup-box {
     width: 60%;
+}
+.product-main-img{
+	position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.profile-page{
+	padding: 50px 0;
 }
 }
 

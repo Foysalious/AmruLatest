@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\ConfirmedOrder;
 use App\Mail\DeliveredOrder;
 use App\Mail\CancelledOrder;
+use App\Models\Backend\Product;
 
 class SellingHistory extends Controller
 {
@@ -61,8 +62,13 @@ class SellingHistory extends Controller
         foreach( $invoice->order as $order ){
             $order->status = 3;
             $order->save();
+            $product = Product::find($order->product_id);
+            $product->quantity = $product->quantity - $order->qty;
+            $product->save();
         }
         $invoice->save();
+
+        
 
         $request->session()->flash('delivered','Order delivered');
 

@@ -89,6 +89,7 @@ ul{
     width: 85%;
     background: #fcfcfc;
     padding-bottom: 50px;
+    overflow: hidden;
 }
 .form-control:focus{
     box-shadow: none!important;
@@ -356,14 +357,15 @@ table{
     box-shadow: #dad9d9 0px 7px 16px -3px;
 }
 table thead tr{
-    background: #dd2173;
+    background: #5a256c;
     color: white;
 }
 .stat-card{
-    background: #dd2173;
+    background: #5a256c;
     padding: 15px;
     text-align: center;
     transition: 0.4s ease-in-out;
+    margin-bottom: 15px;
 }
 .stat-card h3{
     margin: 15px 0;

@@ -10,7 +10,7 @@
 		<div class="row">
 			<!-- left part start -->
 			<div class="col-md-4">
-				<div class="product-main-img">
+				<div class="product-main-img detail-img">
 					<img src="{{asset('images/product/'.$product->images[0]->image)}}" class="img-fluid to-img1 block__pic">
 					<img src="{{asset('images/product/'.$product->images[1]->image)}}" class="img-fluid to-img2 block__pic">
 					<img src="{{asset('images/product/'.$product->images[2]->image)}}" class="img-fluid to-img3 block__pic">
@@ -56,33 +56,6 @@
 						</div>
 					</div>
 					<!-- title and price row end -->
-
-					<!-- review row start -->
-					<div class="row">
-						<div class="col-md-3 col-4 product-detail-rating">
-							<ul>
-								<li>
-									<a href=""><i class="fas fa-star"></i></a>
-								</li>
-								<li>
-									<a href=""><i class="fas fa-star"></i></a>
-								</li>
-								<li>
-									<a href=""><i class="fas fa-star"></i></a>
-								</li>
-								<li>
-									<a href=""><i class="fas fa-star"></i></a>
-								</li>
-								<li>
-									<a href=""><i class="fas fa-star"></i></a>
-								</li>
-							</ul>
-						</div>
-						<div class="col-md-9 col-8 product-detail-review">
-							<p>4.7 <i class="fas fa-caret-right"></i></p>
-						</div>
-					</div>
-					<!-- review row end -->
 
 					<!-- description row start -->
 					<div class="row description-row">
@@ -146,9 +119,7 @@
 					<div class="col-md-12 col-12 product-hover">
 						<div class="product-item-01">
 							<div class="product-hover-item">
-								
-								
-								<a class="show-product-popup" id="profile_view_1">
+								<a class="show-product-popup" id="{{ $product->id }}">
 									<i class="fas fa-eye"></i>
 								</a>
 							</div>
@@ -159,15 +130,15 @@
 							<!-- main thumbnail -->
 	
 							<!-- go product details -->
-							<a href="">
+							<div class="product-name">
 								<p>{{$product->name}}</p>
 								@if($product->offer_price==NULL)
-								<span>{{$product->regular_price}} </span>
+								<span>{{$product->regular_price}}TK </span>
 								@else
-								<span>{{$product->offer_price}} </span>
-								<span> <del> {{$product->regular_price}} </del></span>
+								<span>{{$product->offer_price}}TK </span>
+								<span> <del> {{$product->regular_price}}TK </del></span>
 								@endif
-							</a>
+							</div>
 							<!-- go product details -->
 							
 							<div class="product-item-cart">
@@ -187,13 +158,6 @@
 								</button>
 								@endif
 							</div>
-							<ul>
-								<li><i class="fas fa-star"></i></li>
-								<li><i class="fas fa-star"></i></li>
-								<li><i class="fas fa-star"></i></li>
-								<li><i class="fas fa-star"></i></li>
-								<li><i class="fas fa-star"></i></li>
-							</ul>
 						</div>
 					</div>
 				</div>
@@ -207,7 +171,7 @@
 			
 			@foreach ($relatedProducts as $product)
 			<!-- product quick view popup start -->
-			<div class="product-quick-view profile_view_1">
+			<div class="product-quick-view {{ $product->id }}">
 				<i class="fas fa-times hide-quick-view"></i>
 				<div class="container">
 					<div class="row">
@@ -216,10 +180,8 @@
 							<div class="row">
 								<!-- left part start -->
 								<div class="col-md-6">
-									<div class="product-main-img">
-										<a href="product-details.php">
-											<img src="{{ asset('images/product/'.$product->images[0]->image) }}" class="img-fluid to-img1 ">
-										</a>
+									<div class="product-main-img ">
+										<img src="{{ asset('images/product/'.$product->images[0]->image) }}" class="img-fluid to-img1 ">
 									</div>
 								</div>
 								<!-- left part end -->
@@ -227,34 +189,8 @@
 								<!-- right part start -->
 								<div class="col-md-6">
 									<div class="product-quick-view-right">
-										<h2 class="quick-view-heading">{{ $product->name }}</h2>
+										<h2 class="quick-view-heading">{{ $product->name }} - {{ $product->size }}</h2>
 
-										<!-- review start -->
-										<div class="row">
-											<div class="col-md-6 col-6 product-quick-view-right-left">
-												<ul>
-													<li>
-														<a href=""><i class="fas fa-star"></i></a>
-													</li>
-													<li>
-														<a href=""><i class="fas fa-star"></i></a>
-													</li>
-													<li>
-														<a href=""><i class="fas fa-star"></i></a>
-													</li>
-													<li>
-														<a href=""><i class="fas fa-star"></i></a>
-													</li>
-													<li>
-														<a href=""><i class="fas fa-star"></i></a>
-													</li>
-												</ul>
-											</div>
-											<div class="col-md-6 col-6">
-												<p>122 reviews</p>
-											</div>
-										</div>
-										<!-- review end -->
 
 										<!-- avaiablity and stock start -->
 										<div class="row available">

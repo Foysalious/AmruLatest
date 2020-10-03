@@ -152,7 +152,7 @@
 									<!-- main thumbnail -->
 
 									<!-- go product details -->
-									<p>{{ $product->name }}</p>
+									<p>{{ $product->name }} {{ $product->size }}</p>
 									@if($product->offer_price==NULL)
 									<span>{{$product->regular_price}} </span>
 									@else
@@ -178,13 +178,6 @@
 								</button>
 								@endif
 									</div>
-									<ul>
-										<li><i class="fas fa-star"></i></li>
-										<li><i class="fas fa-star"></i></li>
-										<li><i class="fas fa-star"></i></li>
-										<li><i class="fas fa-star"></i></li>
-										<li><i class="fas fa-star"></i></li>
-									</ul>
 								</div>
 							</div>
 							<!-- product item end -->
@@ -208,34 +201,7 @@
 												<!-- right part start -->
 												<div class="col-md-6">
 													<div class="product-quick-view-right">
-													<h2 class="quick-view-heading">{{ $product->name }}</h2>
-
-														<!-- review start -->
-														<div class="row">
-															<div class="col-md-6 col-6 product-quick-view-right-left">
-																<ul>
-																	<li>
-																		<a href=""><i class="fas fa-star"></i></a>
-																	</li>
-																	<li>
-																		<a href=""><i class="fas fa-star"></i></a>
-																	</li>
-																	<li>
-																		<a href=""><i class="fas fa-star"></i></a>
-																	</li>
-																	<li>
-																		<a href=""><i class="fas fa-star"></i></a>
-																	</li>
-																	<li>
-																		<a href=""><i class="fas fa-star"></i></a>
-																	</li>
-																</ul>
-															</div>
-															<div class="col-md-6 col-6">
-																<p>122 reviews</p>
-															</div>
-														</div>
-														<!-- review end -->
+													<h2 class="quick-view-heading">{{ $product->name }} - {{ $product->size }}</h2>
 
 														<!-- avaiablity and stock start -->
 														<div class="row available">

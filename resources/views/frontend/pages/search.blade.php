@@ -57,7 +57,7 @@
 									<!-- main thumbnail -->
 
 									<!-- go product details -->
-									<p>{{ $searc->name }}</p>
+									<p>{{ $searc->name }} - {{ $searc->size }}</p>
 									@if($searc->offer_price==NULL)
 									<span>{{$searc->regular_price}} </span>
 									@else
@@ -83,13 +83,6 @@
 								</button>
 								@endif
 									</div>
-									<ul>
-										<li><i class="fas fa-star"></i></li>
-										<li><i class="fas fa-star"></i></li>
-										<li><i class="fas fa-star"></i></li>
-										<li><i class="fas fa-star"></i></li>
-										<li><i class="fas fa-star"></i></li>
-									</ul>
 								</div>
 							</div>
 							<!-- product item end -->
@@ -105,7 +98,7 @@
 												<!-- left part start -->
 												<div class="col-md-6">
 													<div class="product-main-img">
-															<img src="{{asset('images/product/'.$searc->images[0]->image) }}" class="img-fluid to-img1 ">
+														<img src="{{asset('images/product/'.$searc->images[0]->image) }}" class="img-fluid to-img1 ">
 													</div>
 												</div>
 												<!-- left part end -->
@@ -114,33 +107,6 @@
 												<div class="col-md-6">
 													<div class="product-quick-view-right">
 													<h2 class="quick-view-heading">{{ $searc->name }}</h2>
-
-														<!-- review start -->
-														<div class="row">
-															<div class="col-md-6 col-6 product-quick-view-right-left">
-																<ul>
-																	<li>
-																		<a href=""><i class="fas fa-star"></i></a>
-																	</li>
-																	<li>
-																		<a href=""><i class="fas fa-star"></i></a>
-																	</li>
-																	<li>
-																		<a href=""><i class="fas fa-star"></i></a>
-																	</li>
-																	<li>
-																		<a href=""><i class="fas fa-star"></i></a>
-																	</li>
-																	<li>
-																		<a href=""><i class="fas fa-star"></i></a>
-																	</li>
-																</ul>
-															</div>
-															<div class="col-md-6 col-6">
-																<p>122 reviews</p>
-															</div>
-														</div>
-														<!-- review end -->
 
 														<!-- avaiablity and stock start -->
 														<div class="row available">

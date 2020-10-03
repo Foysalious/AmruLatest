@@ -11,6 +11,8 @@ use App\Mail\CustomerOrderPlace;
 use Illuminate\Support\Facades\Mail;
 use Excel;
 use App\Exports\ReportExport;
+use Carbon\Carbon;
+
 class InvoiceController extends Controller
 {
     /**
@@ -50,6 +52,7 @@ class InvoiceController extends Controller
             foreach($request->product_id as $key => $product_id){
                     $product = Product::find($product_id);
                     $order = new Order();
+                    $order->product_id = $product->id;
                     $order->product_name = $product->name;
                     $order->image = $product->images[0]->image;
                     $order->size = $product->size;
@@ -94,13 +97,20 @@ class InvoiceController extends Controller
 
 
     public function export(){
-        $data = [
-            ['name'=> 'Imran Hossain', 'email' => 'gargximran@gmail.com'],
-            ['name'=> 'Foysal Rahnam', 'email'=> 'foysal@gamil.com']
-        ];
+        $data = Order::whereDate('updated_at', Carbon::today())->where("status", 3)->get();
 
         $export = new ReportExport();
-        return Excel::download($export->getDownloadByQuery($data), 'report.csv');
+        return Excel::download($export->getDownloadByQuery($data), 'report - '.Carbon::today()->toDateString().'.csv');
+
+
+    }
+
+
+    public function exportToDateFromDate(Request $request){
+        $data = Order::whereBetween('updated_at', [Carbon::parse($request->from),Carbon::parse($request->to)->addDay()])->orderBy('id','desc')->get();
+
+        $export = new ReportExport();
+        return Excel::download($export->getDownloadByQuery($data), 'report - '.Carbon::parse($request->from)->toDateString().' - '.Carbon::parse($request->to)->toDateString().'.csv');
 
 
     }

@@ -152,7 +152,7 @@
 									<!-- main thumbnail -->
 
 									<!-- go product details -->
-									<p>{{ $product->name }}</p>
+									<p>{{ $product->name }} - {{ $product->size }}</p>
 									@if($product->offer_price==NULL)
 									<span>{{$product->regular_price}} </span>
 									@else
@@ -178,13 +178,6 @@
 								</button>
 								@endif
 									</div>
-									<ul>
-										<li><i class="fas fa-star"></i></li>
-										<li><i class="fas fa-star"></i></li>
-										<li><i class="fas fa-star"></i></li>
-										<li><i class="fas fa-star"></i></li>
-										<li><i class="fas fa-star"></i></li>
-									</ul>
 								</div>
 							</div>
 							<!-- product item end -->
@@ -208,7 +201,7 @@
 												<!-- right part start -->
 												<div class="col-md-6">
 													<div class="product-quick-view-right">
-													<h2 class="quick-view-heading">{{ $product->name }}</h2>
+													<h2 class="quick-view-heading">{{ $product->name }} - {{ $product->size }}</h2>
 
 														<!-- review start -->
 														<div class="row">

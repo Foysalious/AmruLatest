@@ -807,11 +807,15 @@ a:hover{
 .product-item-01{
 	text-align: center;
 	position: relative;
+	padding: 15px 0;
 }
 .product-item-01 span{
 	color: #d92173;
 	display: block;
 	margin-bottom: 10px;
+}
+.product-name{
+	margin: 15px 0;
 }
 .product-item-01 span del{
 	color: #989898;
@@ -1542,11 +1546,8 @@ html .ui-button.ui-state-disabled:active:hover{
     background: #d92173;
     padding: 7px;
     border-radius: 20px;
-    display: none;
 }
-.product-hover:hover .product-hover-item .fa-eye{
-	display: block;
-}
+
 .list-wise{
 	display: none;
 }
@@ -1711,6 +1712,7 @@ html .ui-button.ui-state-disabled:active:hover{
 
 
 /* product details page css start */
+
 .product-main-img img{
 	width: 100%;
 }
@@ -1895,6 +1897,9 @@ html .ui-button.ui-state-disabled:active:hover{
 
 
 /* profile page css start */
+.profile-page{
+	padding: 100px 0;
+}
 .visitor-image{
 	background: #EFE6DC;
     height: 150px;
@@ -2058,7 +2063,7 @@ html .ui-button.ui-state-disabled:active:hover{
 /* login page css start */
 .login{
 	position: relative;
-	padding: 100px 0;
+	padding: 150px 0;
 }
 .login-box{
 	
@@ -2252,6 +2257,9 @@ html .ui-button.ui-state-disabled:active:hover{
 	display: block;
 	margin: 0 auto;
 }
+.contact-form .form-control:focus{
+	border: 1px solid #d82173;
+}
 /* contact page cs end */
 
 
@@ -2286,6 +2294,11 @@ html .ui-button.ui-state-disabled:active:hover{
 }
 .about p{
 	text-align: justify;
+}
+.about .right{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
 }
 /* about page css end */
 

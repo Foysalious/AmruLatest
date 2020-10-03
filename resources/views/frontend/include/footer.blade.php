@@ -60,12 +60,13 @@
 					<h2>quick links</h2>
 					 
 					<div class="row">
+						@foreach( App\Models\Backend\Link::orderBy('id','desc')->get() as $link )
 					 	<div class="col-md-6 col-6">
-					 		<a href="">
-					 			<i class="fas fa-angle-right"></i> food items
+					 		<a href="{{ $link->link }}">
+					 			<i class="fas fa-angle-right"></i> {{ $link->title }}
 					 		</a>
 					 	</div>
-					 	
+					 	@endforeach
 					</div>
 
 				</div>

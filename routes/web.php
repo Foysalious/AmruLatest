@@ -19,6 +19,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\InvoiceController;
 
 use App\Models\Backend\Cart;
+use App\Models\Invoice;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -240,6 +241,7 @@ Route::get('/login/facebook', [LoginController::class, 'redirectToFacebookProvid
 Route::get('/login/facebook/callback', [LoginController::class, 'handleFacebookProviderCallback']);
 
 
-Route::get('/excel', [InvoiceController::class, 'export']);
+Route::get('/excel', [InvoiceController::class, 'export'])->name('download_today');
+Route::post('/export/pick', [InvoiceController::class, 'exportToDateFromDate'])->name('report_picker');
 
 

@@ -83,16 +83,16 @@ class CartController extends Controller
     public function update_cart(Request $request, $id){
         $carts = $this->get_cart($request);
         $newCart = [];
-        if($carts){
-            foreach($carts as $cart){
-                if($cart['id']== $id){
+        if($carts):
+            foreach($carts as $cart):
+                if($cart['id']== $id):
                     $cart['qty'] = $request->qty;
                     $cart['total'] =  $cart['price']*$cart['qty'];
-                }
+                endif;
 
                 array_push($newCart, $cart);
-            }
-        }
+            endforeach;
+        endif;
 
         $request->session()->put('cart', $newCart);    
 

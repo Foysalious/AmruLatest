@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<img src="{{asset('Frontend/images/contact.png')}}" class="img-fluid">
+				<iframe style="width: 100%" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.758489377996!2d90.43648361543286!3d23.862708290392558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb1b55ee0ab260ab0!2sDobadia%20Bazar!5e0!3m2!1sen!2sbd!4v1601703839819!5m2!1sen!2sbd" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 			</div>
 		</div>
 	</div>

@@ -74,7 +74,7 @@
                         <li >
                             <a href="{{ route('linkShow') }}">
                             <div class="left">
-                                link
+                                Quick link
                             </div>
                             <div class="right">
                                 <i class="fas fa-bars"></i>

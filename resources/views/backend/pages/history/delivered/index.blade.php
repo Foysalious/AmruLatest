@@ -8,13 +8,57 @@
         <!-- page indicator start -->
         <section class="page-indicator">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-5">
                     <ul>
                         <li>
                             <i class="fas fa-truck-loading"></i>
                         </li>
                         <li>
                             Delivered Order
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-7 text-right">
+                    <ul>
+                        <li>
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#dateToDate">
+                                Download Date to Date
+                              </button>
+                              <!-- Modal -->
+                                <div class="modal fade" id="dateToDate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Download Date To Date</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{ route('report_picker') }}" method="post">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <label>Date From</label>
+                                                    <input type="date" class="form-control" name="from">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Date To</label>
+                                                    <input type="date" class="form-control" name="to">
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                        </li>
+                        <li>
+                            <a class="btn btn-outline-secondary"  href="{{route('download_today')}}">Download Todays history</a>
                         </li>
                     </ul>
                 </div>

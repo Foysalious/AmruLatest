@@ -166,7 +166,7 @@
             padding: 5px 10px;
             display: inline-block;
             color: white;
-        }
+		}
 	</style>
 </head>
 <body style="position: relative;">
