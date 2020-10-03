@@ -162,9 +162,11 @@
 }
 
 .login-box {
-    width: 90%;
+    width: 100%;
 }
-
+.login{
+	padding: 50px 0;
+}
 
 .signup{
 	height: unset;
@@ -227,6 +229,9 @@
 }
 .profile-page{
 	padding: 30px 0;
+}
+.login-bottom ul li{
+	margin: 0;
 }
 }
 
@@ -487,6 +492,15 @@
 .profile-page{
 	padding: 30px 0;
 }
+.login-box {
+    width: 100%;
+}
+.login{
+	padding: 50px 0;
+}
+.login-bottom ul li{
+	margin: 0;
+}
 }
 
 
@@ -621,6 +635,12 @@
 .profile-page{
 	padding: 50px 0;
 }
+.login-box {
+    width: 100%;
+}
+.login{
+	padding: 50px 0;
+}
 }
 
 
@@ -671,5 +691,6 @@
 .profile-page{
 	padding: 50px 0;
 }
+
 }
 

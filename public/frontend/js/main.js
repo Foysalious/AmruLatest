@@ -387,9 +387,7 @@ $(document).ready(function(){
             "overflow" : "auto",
         })
     })
-    $(".nav-mega-menu").click(function(){
-        $(".mega-menu-mob").slideToggle();
-    })
+    
 })
 
 //product details js
@@ -632,9 +630,21 @@ $("#createMessage").submit(function(e) {
       processData: false, 
 	  success:function(data) {
         swal("","Message successfully send","success");
-        $("#createAd input").val('');
-        $("#createAd textarea").val('');
+        $("#createMessage input").val('');
+        $("#createMessage textarea").val('');
 	  }
     });
     
   });
+
+
+
+  //nav mob dropdown
+  $(document).ready(function(){
+      $(".nav-mega-menu").click(function(){
+          let showNav = $(this).attr('id');
+          if( showNav != 'all' ){
+              $('.' + showNav).slideToggle();
+          }
+      })
+  })

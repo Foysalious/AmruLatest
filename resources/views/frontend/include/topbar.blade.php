@@ -7,9 +7,11 @@
 			
 			<!--- logo start -->
 			<div class="col-md-3 topbar-logo">
+				@foreach( App\Models\Backend\Logo::all() as $logo )
 				<a href="{{ route('index') }}">
-					<img src="{{ asset('frontend/images/logo.png') }}" class="img-fluid">
+					<img src="{{ asset('images/logo/'.$logo->image) }}" width="150px" class="img-fluid">
 				</a>
+				@endforeach
 			</div>
 			<!--- logo end -->
 
@@ -129,13 +131,14 @@
 
 	<!-- search mobile -->
 	<div class="topbar-bottom-search">
-		<form action="search" method="post">
-					<input type="hidden" name="_token" value="Ot2KJv0V4qb7eLdpINXvc1Cbmh72KZd6P9FTxdLe">			<div class="form-group">
+		<form action="{{route('search')}}" method="post">
+			@csrf
+			<div class="form-group">
 				<input type="search" class="form-control" name="search" placeholder="Search For Products">
 			</div>
 
 			<div class="form-group search-button">
-				<input type="submit" class="form-control" value="Search" name="">
+				<input type="submit" class="form-control" value="Search">
 			</div>
 		</form>
 	</div>
@@ -178,14 +181,28 @@
 			</tbody>
 		</table>
 		<div class="cart-button">
-			<button class="view-checkout">checkout</button>
+			@auth
+			<a href="{{ route('checkout') }}" class="view-checkout">checkout</a>
+			@else
+			<a href="{{ route('customerlogin') }}" class="view-checkout">checkout</a>
+			@endauth
 		</div>
 	</div>
 	<!-- show item end -->
 
 	<!-- show item start -->
 	<div class="show-item p5">
-		<a href="customer/profile">login or register</a>
+		@auth
+		<a href="{{ route('profile') }}">
+		 	<i class="fas fa-user"></i>	{{ Auth::user()->name }}
+		</a>
+		
+		@else
+		<a href="{{ route('customerlogin') }}">
+			<i class="fas fa-user"></i> My Account
+		</a>
+		
+		@endauth
 	</div>
 	<!-- show item end -->
 

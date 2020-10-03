@@ -1,5 +1,13 @@
 @extends('frontend.template.layout')
 
+@section('meta')
+<meta name="og:title" content="{{ $product->name }}" />
+<meta name="og:description" content="{{ Str::limit($product->description,50) }}" />
+<meta name="og:type" content="article" />
+<meta name="og:url" content="" />
+<meta name="og:image" content="" />
+@endsection
+
 @section('body-content')
 
 <!-- product details section start -->

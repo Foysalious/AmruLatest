@@ -177,6 +177,8 @@ Route::group(['prefix'=>'dashboard', 'middleware'=>['auth','can:superadmin']], f
     //my profile route end
 
     Route::get('/showNewsletter',[FrontendController::class,'show'])->name('showNewsletter');
+    Route::get('/showcontactUS', [FrontendController::class, 'contactusindex'])->name('ContactMessage');
+
 
 
 });

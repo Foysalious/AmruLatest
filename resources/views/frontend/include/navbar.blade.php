@@ -52,54 +52,40 @@
 	<div class="fixed-menu-mob">
 		<ul>
 			<li>
-				<a href="index.php">
-					<img src="images/logo.png" class="img-fluid">
+				@foreach( App\Models\Backend\Logo::all() as $logo )
+				<a href="{{ route('index') }}">
+					<img src="{{ asset('images/logo/'.$logo->image) }}" width="150px" class="img-fluid">
+				</a>
+				@endforeach
+			</li>
+			@foreach( App\Models\Backend\Link::orderBy('id','desc')->get() as $link )
+			<li>
+				<a href="{{ $link->link }}">
+					<i class="fas fa-angle-right"></i> {{ $link->title }}
 				</a>
 			</li>
+			@endforeach
+			@foreach(App\Models\Backend\Category::orderBy('id','asc')->where('parent_id',0)->where('is_delete',0)->get() as $pcategory) 
 			<li>
-				<div class="row nav-mega-menu">
+				<div class="row nav-mega-menu" id="{{ $pcategory->id }}">
 					<div class="col-8">
-						<a href="">all department </a>
+						<p>{{ $pcategory->name }}</p>
 					</div>
 					<div class="col-4 nav-mega-menu-icon">
 						<i class="fas fa-chevron-down"></i></a>
 					</div>
 				</div>
 
-				<div class="row mega-menu-mob">
+				@foreach( App\Models\Backend\Category::orderBy('id','asc')->where('parent_id',$pcategory->id)->where('is_delete',0)->get() as $subCat  )
+				<div class="row mega-menu-mob {{ $pcategory->id }}">
 					<div class="col-md-12">
-						<a href="">item one</a>
-					</div>
-					<div class="col-md-12">
-						<a href="">item two</a>
-					</div>
-					<div class="col-md-12">
-						<a href="">item three</a>
-					</div>
-					<div class="col-md-12">
-						<a href="">item four</a>
+						<a href="{{route('shop',$subCat->slug)}}">{{ $subCat->name }}</a>
 					</div>
 				</div>
+				@endforeach
 				
 			</li>
-			<li>
-				<a href="">baby food</a>
-			</li>
-			<li>
-				<a href="">meat</a>
-			</li>
-			<li>
-				<a href="">fish item</a>
-			</li>
-			<li>
-				<a href="">dairy product</a>
-			</li>
-			<li>
-				<a href="">others</a>
-			</li>
-			<li>
-				<a href="">all items</a>
-			</li>
+			@endforeach
 		</ul>
 	</div>
 	<!-- fixed menu end -->

@@ -86,7 +86,7 @@
                                 @csrf
                                     <div class="form-group">
                                         <label>Description *</label>   
-                                        <textarea  name="description"> </textarea>                           
+                                        <textarea class="ckeditor form-control" name="description"> </textarea>                           
                                     </div>
                                     
                                     <div class="form-group">
@@ -128,7 +128,8 @@
                             <tr>
                                 <th>{{ $i }}</th>
                               
-                                <td>{!! $about->description !!}</td>
+                                <td style="color: #000000">{!! Str::limit($about->description,150) !!}</td>
+                                
                                
                                 <td>
                                 
@@ -150,7 +151,7 @@
                                             @csrf
                                                 <div class="form-group">
                                                     <label>Description</label>   
-                                                    <textarea  name="description">{{!!$about->description!!}} </textarea>                                  
+                                                    <textarea  class="ckeditor form-control" name="description">{!!$about->description!!} </textarea>                                  
                                                 </div>
                                                 
                                                 <div class="form-group">

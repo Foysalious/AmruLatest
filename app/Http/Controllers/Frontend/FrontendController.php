@@ -122,4 +122,9 @@ class FrontendController extends Controller
         return response()->json($contact, 200);
     }
 
+    public function contactusindex(Request $request){
+        $contacts = ContactInfo::orderBy('id','desc')->get();
+        return view('backend.pages.contactUs.manage',compact('contacts'));
+    }
+
 }

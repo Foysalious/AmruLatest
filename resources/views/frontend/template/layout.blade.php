@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 
-	@include('frontend.include.header')
+    @yield('meta') 
+    @include('frontend.include.header')
     @include('frontend.include.css')
     
 </head>

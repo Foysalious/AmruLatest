@@ -206,6 +206,19 @@
                         </li>
                         <!-- nav single view end -->
 
+                         <!-- nav single view start -->
+                         <li >
+                            <a href="{{ route('ContactMessage') }}">
+                            <div class="left">
+                                Contact US Message
+                            </div>
+                            <div class="right">
+                                <i class="fas fa-bars"></i>
+                            </div>
+                            </a>
+                        </li>
+                        <!-- nav single view end -->
+
                         <li >
                             <a href="{{ route('showNewsletter') }}">
                             <div class="left">

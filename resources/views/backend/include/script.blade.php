@@ -13,6 +13,8 @@
 
 	<!-- data table js -->
 	<script type="text/javascript" src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+	<script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+
 	
 	<!-- the main js file -->
 	<script type="text/javascript" src="{{ asset('backend/js/main.js') }}" ></script>
@@ -23,6 +25,12 @@
 			$('#myTable').DataTable();
 			$('#myTable2').DataTable();
         });
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('.ckeditor').ckeditor();
+		});
 	</script>
 	
 	@yield('js')
