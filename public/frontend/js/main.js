@@ -613,3 +613,28 @@ $.ajaxSetup({
     })
 
   })
+
+ 
+
+$("#createMessage").submit(function(e) {
+	e.preventDefault();
+    
+
+    var formData = new FormData(this);
+ 
+	
+	$.ajax({
+      type:'POST',
+      url:'api/contact-us',
+      data:formData,
+      cache:false,
+      contentType: false,
+      processData: false, 
+	  success:function(data) {
+        swal("","Message successfully send","success");
+        $("#createAd input").val('');
+        $("#createAd textarea").val('');
+	  }
+    });
+    
+  });

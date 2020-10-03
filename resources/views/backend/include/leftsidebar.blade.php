@@ -34,7 +34,7 @@
 
                         <!-- nav single view start -->
                         <li >
-                            <a href="{{ route('dashboard') }}">
+                            <a href="{{ route('backend_dashboard') }}">
                             <div class="left">
                                     dashboard
                             </div>
@@ -185,6 +185,31 @@
                             <a href="{{ route('bannerShow') }}">
                             <div class="left">
                                 Addvertisement
+                            </div>
+                            <div class="right">
+                                <i class="fas fa-bars"></i>
+                            </div>
+                            </a>
+                        </li>
+                        <!-- nav single view end -->
+
+                         <!-- nav single view start -->
+                         <li >
+                            <a href="{{ route('aboutShow') }}">
+                            <div class="left">
+                                About
+                            </div>
+                            <div class="right">
+                                <i class="fas fa-bars"></i>
+                            </div>
+                            </a>
+                        </li>
+                        <!-- nav single view end -->
+
+                        <li >
+                            <a href="{{ route('showNewsletter') }}">
+                            <div class="left">
+                                Newsletter Email
                             </div>
                             <div class="right">
                                 <i class="fas fa-bars"></i>

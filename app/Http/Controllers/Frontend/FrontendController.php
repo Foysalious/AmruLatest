@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Backend\Category;
 use Illuminate\Http\Request;
 use App\Models\Backend\Product;
+use App\Models\Frontend\ContactInfo;
 use App\Models\Frontend\newsLetter;
 
 class FrontendController extends Controller
@@ -97,6 +98,28 @@ class FrontendController extends Controller
      //signup show
      public function signup(){
         return view('frontend.pages.signup');
+    }
+
+    //newsletter subscribed mail show
+    public function show(){
+        $letters = newsLetter::orderBy('id','desc')->get();
+        return view('backend.pages.newsletter.manage',compact('letters'));
+    }
+    
+    //contact us
+
+    public function contactus(Request $request){
+        $contact = new ContactInfo();
+        $contact->name          = $request->name;
+        $contact->email          = $request->email;
+        $contact->phone          = $request->phone;
+        
+        $contact->message          = $request->message;
+       
+       
+        $contact->save();
+
+        return response()->json($contact, 200);
     }
 
 }

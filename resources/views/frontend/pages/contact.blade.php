@@ -18,18 +18,22 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<form>
+				<form id="createMessage">
+				
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Name*" name="">
+						<input type="text" class="form-control" placeholder="Name*" name="name">
 					</div>
 					<div class="form-group">
-						<input type="email" class="form-control" placeholder="Email*" name="">
+						<input type="email" class="form-control" placeholder="Email*" name="email">
 					</div>
 					<div class="form-group">
-						<textarea class="form-control" rows="3"></textarea>
+						<input type="text" class="form-control" placeholder="Phone*" name="phone">
 					</div>
 					<div class="form-group">
-						<input type="submit" class="btn" value="Send Message" name="">
+						<textarea class="form-control" rows="3" name="message"></textarea>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn" value="Send Message" name="">Send</button>
 					</div>
 				</form>
 			</div>

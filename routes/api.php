@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('/letter',[FrontendController::class,'storeNewsletter'])->name('letter'); 
+Route::post('/contact-us', [FrontendController::class, 'contactus'])->name('contactUs');
+

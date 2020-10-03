@@ -13,7 +13,9 @@ use App\Http\Controllers\Backend\CartController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\LinkController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\SellingHistory;
+
 use App\Http\Controllers\Frontend\FrontendController;
 
 use App\Http\Controllers\InvoiceController;
@@ -39,7 +41,7 @@ Auth::routes();
 
 
 Route::group(['prefix'=>'dashboard', 'middleware'=>['auth','can:superadmin']], function(){
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('backend_dashboard');
 
     //category route start
     Route::group(['prefix' => 'category'], function(){
@@ -165,6 +167,17 @@ Route::group(['prefix'=>'dashboard', 'middleware'=>['auth','can:superadmin']], f
     });
     //my profile route end
 
+     //my profile route start
+     Route::group(['prefix' => 'about'], function(){
+        Route::get('/',[AboutController::class, 'index'])->name('aboutShow');
+        Route::post('/store',[AboutController::class,'store'])->name('aboutStore');
+        Route::post('/update/{about:id}',[AboutController::class,'update'])->name('aboutUpdate');
+        Route::post('/delete/{about:id}',[AboutController::class,'destroy'])->name('aboutDelete');
+    });
+    //my profile route end
+
+    Route::get('/showNewsletter',[FrontendController::class,'show'])->name('showNewsletter');
+
 
 });
 
@@ -243,5 +256,6 @@ Route::get('/login/facebook/callback', [LoginController::class, 'handleFacebookP
 
 Route::get('/excel', [InvoiceController::class, 'export'])->name('download_today');
 Route::post('/export/pick', [InvoiceController::class, 'exportToDateFromDate'])->name('report_picker');
+
 
 
